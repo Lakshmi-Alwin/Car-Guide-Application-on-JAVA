@@ -8,7 +8,21 @@
     <string name="support">SUPPORT</string>
     <string name="account">ACCOUNT</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="questions">
+        <item>Question 1</item>
+        <item>Question 2</item>
+        <item>Question 3</item>
+        <item>Question 4</item>
+        <item>Question 5</item>
+        <item>Question 6</item>
+    </string-array>
 
+    <string-array name="answers">
+        <item>Answer to the question 1 is here</item>
+        <item>Answer to the question 2 is here</item>
+        <item>Answer to the question 3 is here</item>
+        <item>Answer to the question 4 is here</item>
+        <item>Answer to the question 5 is here</item>
+        <item>Answer to the question 6 is here</item>
+    </string-array>
 </resources>

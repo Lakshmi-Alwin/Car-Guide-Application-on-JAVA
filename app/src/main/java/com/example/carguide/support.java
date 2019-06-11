@@ -15,10 +15,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 
 public class support extends Fragment {
+    public static final String QUESTIONSNO = "Question NO";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,6 +54,17 @@ public class support extends Fragment {
                 startActivity(Intent.createChooser(intent, "Choose your email client"));
             }
         });
+
+        ListView listView = v.findViewById(R.id.questionList);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), FAQActivity.class);
+                intent.putExtra(QUESTIONSNO, position);
+                startActivity(intent);
+            }
+        });
+
         return  v;
     }
 }
