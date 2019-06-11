@@ -10,11 +10,39 @@
        android:layout_height="match_parent"
        android:background="@android:color/holo_green_dark">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_centerInParent="true"
-        android:text="@string/account" />
+       <ImageView
+           android:layout_width="150dp"
+           android:layout_height="150dp"
+           android:layout_marginTop="100dp"
+           android:layout_centerHorizontal="true"
+           android:id="@+id/profile_image_account"
+           />
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/profile_text_account"
+           android:layout_below="@+id/profile_image_account"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="50dp"
+           android:text="asdfghjk"/>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_below="@+id/profile_text_account"
+           android:layout_marginTop="50dp"
+           android:id="@+id/profile_email_account"
+           android:text="friends@gmail.com"/>
+
+       <Button
+           android:id="@+id/signout_account"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/profile_email_account"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="100dp"
+           android:text="sign out" />
+
    </RelativeLayout>
 </FrameLayout>
