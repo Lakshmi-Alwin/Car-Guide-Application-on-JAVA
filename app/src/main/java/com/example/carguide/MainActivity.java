@@ -1,9 +1,13 @@
 package com.example.carguide;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.KeyguardManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,10 +26,15 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "AndroidClarified";
     private GoogleSignInClient googleSignInClient;
     private SignInButton googleSignInButton;
+    public int CODE_AUTHENTICATION_VERIFICATION=102;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         googleSignInButton = findViewById(R.id.sign_in_button);
         GoogleSignInOptions.Builder builder = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN);
         builder.requestEmail();
@@ -47,6 +56,18 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.v(TAG, "onActivityResult");
+
+        /*if(!(resultCode==RESULT_OK && requestCode==102))
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            Log.v(TAG,"Failure: Unable to verify user's identity");
+            Toast.makeText(this, "Failure: Unable to verify user's identity", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+        }
+        else
+        {}
+*/
+
         if (resultCode == Activity.RESULT_OK)
             switch (requestCode) {
                 case 101:
@@ -61,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
                     }
                     break;
+
             }
     }
     private void onLoggedIn(GoogleSignInAccount googleSignInAccount) {
@@ -72,9 +94,21 @@ public class MainActivity extends AppCompatActivity {
         finish();
 
     }
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onStart() {
         super.onStart();
+        /*KeyguardManager km = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
+        if(km.isKeyguardSecure()) {
+
+            Intent i = km.createConfirmDeviceCredentialIntent("Authentication required", "password");
+
+            startActivityForResult(i, CODE_AUTHENTICATION_VERIFICATION);
+        }
+        else
+            Toast.makeText(this, "No any security setup done by user(pattern or password or pin or fingerprint", Toast.LENGTH_SHORT).show();
+*/
         GoogleSignInAccount alreadyloggedAccount = GoogleSignIn.getLastSignedInAccount(this);
         if (alreadyloggedAccount != null) {
             Toast.makeText(this, "Already Logged In", Toast.LENGTH_SHORT).show();
