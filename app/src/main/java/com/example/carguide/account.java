@@ -74,7 +74,7 @@ public class account extends Fragment {
 
     private void setDataOnView() {
         Log.v(MainActivity.TAG, "SetData");
-        GoogleSignInAccount googleSignInAccount = getArguments().getParcelable(GOOGLE_ACCOUNT);
+        GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(getActivity());
         Log.v(MainActivity.TAG,"After getting account");
         Picasso.get().load(googleSignInAccount.getPhotoUrl()).centerInside().fit().into(profileImage);
         profileName.setText(googleSignInAccount.getDisplayName());

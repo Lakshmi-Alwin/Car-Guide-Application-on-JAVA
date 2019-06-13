@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
         googleSignInButton = findViewById(R.id.sign_in_button);
         GoogleSignInOptions.Builder builder = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN);
         builder.requestEmail();
@@ -57,17 +54,6 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         Log.v(TAG, "onActivityResult");
 
-        /*if(!(resultCode==RESULT_OK && requestCode==102))
-        {
-            Intent intent = new Intent(this, MainActivity.class);
-            Log.v(TAG,"Failure: Unable to verify user's identity");
-            Toast.makeText(this, "Failure: Unable to verify user's identity", Toast.LENGTH_SHORT).show();
-            startActivity(intent);
-        }
-        else
-        {}
-*/
-
         if (resultCode == Activity.RESULT_OK)
             switch (requestCode) {
                 case 101:
@@ -76,45 +62,15 @@ public class MainActivity extends AppCompatActivity {
                         // a listener.
                         Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
                         GoogleSignInAccount account = task.getResult(ApiException.class);
-                        onLoggedIn(account);
+
+                        Intent intent = new Intent(this, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
                     } catch (ApiException e) {
                         // The ApiException status code indicates the detailed failure reason.
                         Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
                     }
                     break;
-
             }
-    }
-    private void onLoggedIn(GoogleSignInAccount googleSignInAccount) {
-
-        Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra(ProfileActivity.GOOGLE_ACCOUNT, googleSignInAccount);
-
-        startActivity(intent);
-        finish();
-
-    }
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    @Override
-    public void onStart() {
-        super.onStart();
-        /*KeyguardManager km = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
-        if(km.isKeyguardSecure()) {
-
-            Intent i = km.createConfirmDeviceCredentialIntent("Authentication required", "password");
-
-            startActivityForResult(i, CODE_AUTHENTICATION_VERIFICATION);
-        }
-        else
-            Toast.makeText(this, "No any security setup done by user(pattern or password or pin or fingerprint", Toast.LENGTH_SHORT).show();
-*/
-        GoogleSignInAccount alreadyloggedAccount = GoogleSignIn.getLastSignedInAccount(this);
-        if (alreadyloggedAccount != null) {
-            Toast.makeText(this, "Already Logged In", Toast.LENGTH_SHORT).show();
-            onLoggedIn(alreadyloggedAccount);
-        } else {
-            Log.d(TAG, "Not logged in");
-        }
     }
 }
