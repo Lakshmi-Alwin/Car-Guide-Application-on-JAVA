@@ -9,6 +9,7 @@ import android.app.KeyguardManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -29,6 +30,7 @@ public class ScreenLock extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if(account != null)
         {
+            Log.v(MainActivity.TAG, "Signed in");
             KeyguardManager km = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
             if(km.isKeyguardSecure()) {
 
@@ -41,6 +43,7 @@ public class ScreenLock extends AppCompatActivity {
         }
         else
         {
+            Log.v(MainActivity.TAG, "NOT Signed in");
             Intent intent=new Intent(ScreenLock.this,MainActivity.class);
             startActivity(intent);
         }

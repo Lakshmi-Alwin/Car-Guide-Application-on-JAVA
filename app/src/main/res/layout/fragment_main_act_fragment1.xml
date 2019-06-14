@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".support">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+    <RelativeLayout android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/slider1"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp"
+            android:background="@drawable/slider_image1" />
+    <TextView
+        android:id="@+id/complete_co"
+        android:layout_width="300dp"
+        android:layout_height="25dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/slider1"
+        android:layout_marginTop="40dp"
+        android:text="@string/complete_co"
+        android:textAppearance="@style/complete_co"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal|top"
+        />
+
+        <TextView
+            android:id="@+id/jedi_like_p"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/complete_co"
+            android:layout_marginTop="40dp"
+            android:text="@string/jedi_like_p"
+            android:textAppearance="@style/jedi_like_p"
+            android:gravity="center_horizontal|top"
+            />
+</RelativeLayout>
+</ScrollView>
+</FrameLayout>

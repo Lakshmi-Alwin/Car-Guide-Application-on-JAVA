@@ -7,6 +7,9 @@
     <string name="vehicle">VEHICLE</string>
     <string name="support">SUPPORT</string>
     <string name="account">ACCOUNT</string>
+    <string name="complete_co">COMPLETE CONTROL</string>
+    <string name="jedi_like_p">Jedi like powers at your finger tips.</string>
+
 
     <string-array name="questions">
         <item>Question 1</item>
@@ -25,4 +28,7 @@
         <item>Answer to the question 5 is here</item>
         <item>Answer to the question 6 is here</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    
 </resources>
