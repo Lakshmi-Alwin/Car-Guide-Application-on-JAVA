@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".support">
+    android:layout_marginBottom="50dp"
+    tools:context=".support"
+    android:background="@color/black">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,10 +28,20 @@
                     android:layout_height="match_parent">
                     <ImageView
                         android:id="@+id/callLogo"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/call_logo"
-                        android:layout_centerInParent="true"/>
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/call_button"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="50dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CALL"
+                        android:textColor="#ffffff"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="15dp"
+                        android:layout_below="@+id/callLogo"
+                        android:layout_marginTop="20dp"/>
                 </RelativeLayout>
             </LinearLayout>
 
@@ -42,20 +54,34 @@
                     android:layout_height="match_parent">
                     <ImageView
                         android:id="@+id/emailLogo"
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:src="@drawable/email_logo"
-                        android:layout_centerInParent="true"/>
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/mail_button"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="50dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MAIL"
+                        android:textColor="#ffffff"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="15dp"
+                        android:layout_below="@+id/emailLogo"
+                        android:layout_marginTop="20dp"/>
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
 
-        <ListView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:id="@+id/questionList"
-            android:entries="@array/questions"></ListView>
+            android:layout_weight="2">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                android:id="@+id/recyclerView"/>
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:background="#000000">
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -20,5 +21,8 @@
         android:id="@+id/bottom_navigation"
         android:layout_height="50dp"
         app:menu="@menu/bottom_nav_bar"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:background="#000000"
+        app:itemIconSize="25dp"
+        app:itemIconTint="#ffffff"/>
 </RelativeLayout>

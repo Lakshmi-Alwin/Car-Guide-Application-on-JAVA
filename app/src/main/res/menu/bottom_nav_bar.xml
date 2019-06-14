@@ -2,17 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/car"
-        android:title="car"
-        android:icon="@drawable/ic_directions_car_black_24dp"
+        android:icon="@drawable/vehicle"
         />
 
     <item android:id="@+id/help"
-        android:title="help"
-        android:icon="@drawable/ic_help_outline_black_24dp"
+        android:icon="@drawable/guide_active"
         />
     <item android:id="@+id/account"
-        android:title="account"
-        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:icon="@drawable/settings_active"
         />
 
 </menu>

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".FAQActivity"
     android:weightSum="5"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/black">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
         android:layout_weight="1"
         android:textSize="50dp"
         android:text="sdfghjkl"
+        android:textColor="@color/white"
         android:textAlignment="center"/>
 
     <ScrollView
@@ -30,6 +32,7 @@
             android:layout_height="match_parent"
             android:textAlignment="center"
             android:textSize="30dp"
+            android:textColor="@color/white"
             android:id="@+id/faqAnswer"/>
     </ScrollView>
 </LinearLayout>
