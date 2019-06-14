@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".support">
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/slider1"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="270dp"
+            android:layout_height="270dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="75dp"
@@ -39,11 +39,11 @@
             android:layout_height="25dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/complete_co"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:text="@string/jedi_like_p"
             android:textAppearance="@style/jedi_like_p"
             android:gravity="center_horizontal|top"
             />
 </RelativeLayout>
-</ScrollView>
+</LinearLayout>
 </FrameLayout>

@@ -33,9 +33,8 @@ public class MainActivity extends FragmentActivity {
     public static final String TAG = "AndroidClarified";
     private GoogleSignInClient googleSignInClient;
     private SignInButton googleSignInButton;
-    public int CODE_AUTHENTICATION_VERIFICATION=102;
 
-    private static final int NUM_PAGES = 1;
+    private static final int NUM_PAGES = 3;
     private ViewPager mPager;
     private PagerAdapter pagerAdapter;
 
@@ -49,6 +48,8 @@ public class MainActivity extends FragmentActivity {
         mPager = findViewById(R.id.pager);
         pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         ((ScreenSlidePagerAdapter) pagerAdapter).addFragment(new mainActFragment1(), "ONE");
+        ((ScreenSlidePagerAdapter) pagerAdapter).addFragment(new mainActFragment2(), "TWO");
+        ((ScreenSlidePagerAdapter) pagerAdapter).addFragment(new mainActFragment3(), "THREE");
         mPager.setAdapter(pagerAdapter);
         Log.v(TAG,"after pager");
 
