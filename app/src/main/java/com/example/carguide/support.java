@@ -10,14 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 
 public class support extends Fragment {
@@ -55,16 +55,12 @@ public class support extends Fragment {
             }
         });
 
-        ListView listView = v.findViewById(R.id.questionList);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), FAQActivity.class);
-                intent.putExtra(QUESTIONSNO, position);
-                startActivity(intent);
-            }
-        });
-
+        String []questions = getResources().getStringArray(R.array.questions);
+        RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
+        FAQListAdaper adaper = new FAQListAdaper(questions);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
+        recyclerView.setAdapter(adaper);
         return  v;
     }
 }
