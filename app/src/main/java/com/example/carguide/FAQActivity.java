@@ -3,6 +3,8 @@ package com.example.carguide;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class FAQActivity extends AppCompatActivity {
@@ -22,5 +24,16 @@ public class FAQActivity extends AppCompatActivity {
 
         question.setText(quesList[position]);
         answer.setText(ansList[position]);
+        ImageView vector = findViewById(R.id.vector_left);
+        vector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FAQActivity.super.onBackPressed();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }
