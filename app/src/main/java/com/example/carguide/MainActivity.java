@@ -79,19 +79,12 @@ public class MainActivity extends FragmentActivity {
         if (resultCode == Activity.RESULT_OK)
             switch (requestCode) {
                 case 101:
-                    try {
-                        // The Task returned from this call is always completed, no need to attach
-                        // a listener.
-                        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-                        GoogleSignInAccount account = task.getResult(ApiException.class);
-
-                        Intent intent = new Intent(this, HomeActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } catch (ApiException e) {
-                        // The ApiException status code indicates the detailed failure reason.
-                        Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-                    }
+                    // The Task returned from this call is always completed, no need to attach
+                    // a listener.
+                    Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                    Intent intent = new Intent(this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
                     break;
             }
     }
