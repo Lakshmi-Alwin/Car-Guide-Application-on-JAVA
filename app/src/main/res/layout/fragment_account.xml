@@ -9,16 +9,22 @@
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:background="@android:color/holo_green_dark">
+       android:background="@color/black">
 
 
+       <ImageView
+           android:layout_width="100dp"
+           android:layout_height="100dp"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="100dp"
+           android:id="@+id/profile_image_account"/>
 
-           <ImageView
+          <!-- <ImageView
                android:id="@+id/profile_image_account"
                android:layout_width="150dp"
                android:layout_height="150dp"
                android:layout_centerHorizontal="true"
-               android:layout_marginTop="100dp" />
+               android:layout_marginTop="100dp" />-->
 
        <TextView
            android:layout_width="wrap_content"
@@ -26,11 +32,13 @@
            android:id="@+id/profile_text_account"
            android:layout_below="@+id/profile_image_account"
            android:layout_centerHorizontal="true"
-           android:layout_marginTop="50dp"
-           android:text="asdfghjk"
-           android:textSize="25dp"/>
+           android:layout_marginTop="25dp"
+           android:textColor="@color/white"
+           android:textAppearance="@style/complete_co"
+           android:textSize="25dp"
+           />
 
-       <TextView
+     <!--  <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_centerHorizontal="true"
@@ -38,16 +46,95 @@
            android:layout_marginTop="50dp"
            android:id="@+id/profile_email_account"
            android:text="friends@gmail.com"
-           android:textSize="25dp"/>
+           android:textSize="25dp"/>-->
 
-       <Button
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:weightSum="2"
+           android:layout_below="@+id/profile_text_account"
+           android:layout_marginTop="25dp">
+
+           <LinearLayout
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:layout_weight="1">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+                   <RelativeLayout
+                       android:layout_width="100dp"
+                       android:layout_height="100dp"
+                       android:background="@color/white"
+                       android:layout_centerInParent="true"
+                       android:id="@+id/edit_profile_account">
+                   <ImageView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_centerHorizontal="true"
+                       android:id="@+id/edit_profile_icon"
+                       android:layout_marginTop="10dp"
+                       android:src="@drawable/edit_profile_icon"/>
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_centerHorizontal="true"
+                       android:layout_below="@+id/edit_profile_icon"
+                       android:text="EDIT PROFILE"
+                       android:layout_marginTop="10dp"
+                       android:textColor="@color/black"/>
+                   </RelativeLayout>
+               </RelativeLayout>
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:layout_weight="1">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+                   <RelativeLayout
+                       android:layout_width="100dp"
+                       android:layout_height="100dp"
+                       android:background="@color/white"
+                       android:layout_centerInParent="true"
+                       android:id="@+id/settings_account">
+                       <ImageView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_centerHorizontal="true"
+                           android:id="@+id/settings_icon"
+                           android:layout_marginTop="10dp"
+                           android:src="@drawable/settings"/>
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_centerHorizontal="true"
+                           android:layout_below="@+id/settings_icon"
+                           android:text=" SETTINGS"
+                           android:layout_marginTop="10dp"
+                           android:textColor="@color/black"/>
+                   </RelativeLayout>
+               </RelativeLayout>
+           </LinearLayout>
+           </LinearLayout>
+
+
+
+       <TextView
            android:id="@+id/signout_account"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_below="@+id/profile_email_account"
+
            android:layout_centerHorizontal="true"
-           android:layout_marginTop="80dp"
-           android:text="Log out" />
+           android:layout_below="@id/profile_text_account"
+           android:layout_marginTop="250dp"
+           android:textColor="@color/white"
+           android:text="LOG OUT"
+           android:textAppearance="@style/complete_co"
+           android:textSize="30dp"/>
 
    </RelativeLayout>
 </FrameLayout>

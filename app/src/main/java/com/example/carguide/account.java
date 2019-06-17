@@ -28,7 +28,7 @@ import com.squareup.picasso.Picasso;
 
 public class account extends Fragment {
 
-    private Button signout_account;
+    private TextView signout_account;
     private GoogleSignInClient googleSignInClient;
     public static final String GOOGLE_ACCOUNT = "google_account";
     private TextView profileName, profileEmail;
@@ -40,9 +40,12 @@ public class account extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_account,container,false);
 
+        Log.v(MainActivity.TAG, "in on create view");
         signout_account=v.findViewById(R.id.signout_account);
+        Log.v(MainActivity.TAG, "after signout");
         profileName = v.findViewById(R.id.profile_text_account);
-        profileEmail = v.findViewById(R.id.profile_email_account);
+        Log.v(MainActivity.TAG, "after profile text");
+        //profileEmail = v.findViewById(R.id.profile_email_account);
         profileImage = v.findViewById(R.id.profile_image_account);
         setDataOnView();
 
@@ -78,6 +81,7 @@ public class account extends Fragment {
         Log.v(MainActivity.TAG,"After getting account");
         Picasso.get().load(googleSignInAccount.getPhotoUrl()).centerInside().fit().into(profileImage);
         profileName.setText(googleSignInAccount.getDisplayName());
-        profileEmail.setText(googleSignInAccount.getEmail());
+        //profileEmail.setText(googleSignInAccount.getEmail());
+        Log.v(MainActivity.TAG,"exiting setData");
     }
 }
