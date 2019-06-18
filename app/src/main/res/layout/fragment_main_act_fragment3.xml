@@ -18,7 +18,7 @@
                 android:layout_height="270dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/slider3" />
             <TextView
                 android:id="@+id/assistance"
