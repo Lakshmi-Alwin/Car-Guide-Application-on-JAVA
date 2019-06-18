@@ -32,8 +32,4 @@ public class FAQActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    public void onBackPressed() {
-    }
 }
