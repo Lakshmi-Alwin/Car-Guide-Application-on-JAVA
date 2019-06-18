@@ -30,6 +30,7 @@ import java.util.List;
 
 public class MainActivity extends FragmentActivity {
 
+    public static final String SHAREDPREFERENCES = "MyPREFERENCES";
     public static final String TAG = "AndroidClarified";
     private GoogleSignInClient googleSignInClient;
     private SignInButton googleSignInButton;

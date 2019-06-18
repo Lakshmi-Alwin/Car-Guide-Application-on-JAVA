@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".account">
 
    <RelativeLayout
@@ -11,20 +10,13 @@
        android:layout_height="match_parent"
        android:background="@color/black">
 
-
-       <ImageView
+       <de.hdodenhof.circleimageview.CircleImageView
            android:layout_width="100dp"
            android:layout_height="100dp"
+           android:id="@+id/profile_image_account"
+           android:layout_marginTop="70dp"
            android:layout_centerHorizontal="true"
-           android:layout_marginTop="100dp"
-           android:id="@+id/profile_image_account"/>
-
-          <!-- <ImageView
-               android:id="@+id/profile_image_account"
-               android:layout_width="150dp"
-               android:layout_height="150dp"
-               android:layout_centerHorizontal="true"
-               android:layout_marginTop="100dp" />-->
+           android:src="@color/white"/>
 
        <TextView
            android:layout_width="wrap_content"
@@ -36,17 +28,7 @@
            android:textColor="@color/white"
            android:textAppearance="@style/complete_co"
            android:textSize="25dp"
-           />
-
-     <!--  <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_centerHorizontal="true"
-           android:layout_below="@+id/profile_text_account"
-           android:layout_marginTop="50dp"
-           android:id="@+id/profile_email_account"
-           android:text="friends@gmail.com"
-           android:textSize="25dp"/>-->
+           android:text="NAME"/>
 
        <LinearLayout
            android:layout_width="match_parent"
@@ -64,10 +46,10 @@
                    android:layout_width="match_parent"
                    android:layout_height="match_parent">
                    <RelativeLayout
-                       android:layout_width="100dp"
-                       android:layout_height="100dp"
+                       android:layout_width="120dp"
+                       android:layout_height="120dp"
                        android:background="@color/white"
-                       android:layout_centerInParent="true"
+                       android:layout_centerHorizontal="true"
                        android:id="@+id/edit_profile_account">
                    <ImageView
                        android:layout_width="wrap_content"
@@ -96,10 +78,10 @@
                    android:layout_width="match_parent"
                    android:layout_height="match_parent">
                    <RelativeLayout
-                       android:layout_width="100dp"
-                       android:layout_height="100dp"
+                       android:layout_width="120dp"
+                       android:layout_height="120dp"
                        android:background="@color/white"
-                       android:layout_centerInParent="true"
+                       android:layout_centerHorizontal="true"
                        android:id="@+id/settings_account">
                        <ImageView
                            android:layout_width="wrap_content"
@@ -130,11 +112,11 @@
 
            android:layout_centerHorizontal="true"
            android:layout_below="@id/profile_text_account"
-           android:layout_marginTop="250dp"
+           android:layout_marginTop="270dp"
            android:textColor="@color/white"
            android:text="LOG OUT"
            android:textAppearance="@style/complete_co"
-           android:textSize="30dp"/>
+           android:textSize="20dp"/>
 
    </RelativeLayout>
 </FrameLayout>

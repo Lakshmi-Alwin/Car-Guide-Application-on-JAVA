@@ -38,10 +38,7 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             case R.id.account:
                 selectedFragment = new account();
-                Bundle args = new Bundle();
                 Log.v(MainActivity.TAG, "acount fragemnt");
-                args.putParcelable(GOOGLE_ACCOUNT, getIntent().getParcelableExtra(GOOGLE_ACCOUNT));
-                selectedFragment.setArguments(args);
                 break;
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
