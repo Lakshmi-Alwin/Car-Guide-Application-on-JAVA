@@ -20,13 +20,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 
-public class support extends Fragment {
+public class support extends Fragment implements SupportContract.View {
+
     public static final String QUESTIONSNO = "Question NO";
+    private SupportContract.Presenter presenter;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =  inflater.inflate(R.layout.fragment_support,container,false);
+
+        presenter = new Supportpresenter(this);
         ImageView callLogo = v.findViewById(R.id.callLogo);
         ImageView emailLogo = v.findViewById(R.id.emailLogo);
 
@@ -35,11 +40,7 @@ public class support extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse("tel:9409261943"));
-                if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 1);
-                    Log.v(MainActivity.TAG, "No permission to call");
-                    return;
-                }
+                presenter.onClickSupport(getActivity());
                 startActivity(intent);
             }
         });
