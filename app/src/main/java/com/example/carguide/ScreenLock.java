@@ -34,9 +34,10 @@ public class ScreenLock extends AppCompatActivity {
             KeyguardManager km = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
             if(km.isKeyguardSecure()) {
 
-                Intent i = km.createConfirmDeviceCredentialIntent("Authentication required", "password");
-
-                startActivityForResult(i, 101);
+                Intent intent = km.createConfirmDeviceCredentialIntent("Authentication required", "password");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivityForResult(intent, 101);
+                finish();
             }
             else
                 Toast.makeText(this, "No any security setup done by user(pattern or password or pin or fingerprint", Toast.LENGTH_SHORT).show();
@@ -45,7 +46,9 @@ public class ScreenLock extends AppCompatActivity {
         {
             Log.v(MainActivity.TAG, "NOT Signed in");
             Intent intent=new Intent(ScreenLock.this,MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -54,13 +57,9 @@ public class ScreenLock extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 101 && resultCode == Activity.RESULT_OK) {
             Intent intent = new Intent(ScreenLock.this, HomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
-        }
-        else
-        {
-            finish();
-            System.exit(1);
         }
     }
 }
