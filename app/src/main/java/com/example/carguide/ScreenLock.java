@@ -35,9 +35,7 @@ public class ScreenLock extends AppCompatActivity {
             if(km.isKeyguardSecure()) {
 
                 Intent intent = km.createConfirmDeviceCredentialIntent("Authentication required", "password");
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivityForResult(intent, 101);
-                finish();
             }
             else
                 Toast.makeText(this, "No any security setup done by user(pattern or password or pin or fingerprint", Toast.LENGTH_SHORT).show();
