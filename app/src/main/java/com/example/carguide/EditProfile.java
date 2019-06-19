@@ -19,7 +19,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfile extends AppCompatActivity {
 
-    private Button saveButton;
+    private Button saveButton, cancelButton;
     private EditText phoneNumber, name, address;
     private TextView email;
     private CircleImageView profilePic;
@@ -39,6 +39,7 @@ public class EditProfile extends AppCompatActivity {
         address = findViewById(R.id.edit_profile_address);
         email = findViewById(R.id.edit_profile_email);
         profilePic = findViewById(R.id.edit_profile_pic);
+        cancelButton = findViewById(R.id.edit_profile_cancel);
 
         setData();
 
@@ -51,6 +52,13 @@ public class EditProfile extends AppCompatActivity {
                 editor.putString("clientaddress",address.getText().toString());
                 editor.putString("clientname",name.getText().toString());
                 editor.apply();
+                onBackPressed();
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 onBackPressed();
             }
         });

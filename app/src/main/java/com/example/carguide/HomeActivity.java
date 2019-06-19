@@ -26,30 +26,26 @@ public class HomeActivity extends AppCompatActivity {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-      @Override
-        public boolean onNavigationItemSelected (@NonNull MenuItem item){
-        Fragment selectedFragment = null;
-        switch (item.getItemId()) {
-            case R.id.car:
-                selectedFragment = new vehicle();
-                break;
-            case R.id.help:
-                selectedFragment = new support();
-                break;
-            case R.id.account:
-                selectedFragment = new account();
-                Log.v(MainActivity.TAG, "acount fragemnt");
-                break;
-        }
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-        return true;
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
+                switch (item.getItemId()) {
+                    case R.id.car:
+                        selectedFragment = new vehicle();
+                        break;
+                    case R.id.help:
+                        selectedFragment = new support();
+                        break;
+                    case R.id.account:
+                        selectedFragment = new account();
+                        Log.v(MainActivity.TAG, "acount fragemnt");
+                        break;
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                return true;
 
-    }
+            }
 
-    });
-}
-
-    @Override
-    public void onBackPressed() {
+        });
     }
 }

@@ -56,7 +56,7 @@ public class account extends Fragment {
 
         signout_account.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
           /*
           Sign-out is initiated by simply calling the googleSignInClient.signOut API. We add a
           listener which will be invoked once the sign out is the successful
@@ -71,7 +71,9 @@ public class account extends Fragment {
 
                         Intent intent=new Intent(getActivity(),MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
+                        getActivity().finish();
                     }
                 });
             }
