@@ -1,12 +1,6 @@
 <resources>
     <string name="app_name">CarGuide</string>
-    <string name="title_activity_home">HomeActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="vehicle">VEHICLE</string>
-    <string name="support">SUPPORT</string>
-    <string name="account">ACCOUNT</string>
     <string name="complete_co">COMPLETE CONTROL</string>
     <string name="jedi_like_p">Jedi like powers at your finger tips.</string>
     <string name="guides">GUIDES</string>
@@ -32,8 +26,5 @@
         <item>Answer to the question 5 is here</item>
         <item>Answer to the question 6 is here</item>
     </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

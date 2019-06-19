@@ -7,25 +7,18 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import android.app.Activity;
-
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 
@@ -39,11 +32,9 @@ public class MainActivity extends FragmentActivity {
     public static String SHAREDPREFERENCES;
     public static final String TAG = "AndroidClarified";
     private GoogleSignInClient googleSignInClient;
-    private SignInButton googleSignInButton;
 
     private static final int NUM_PAGES = 3;
     private ViewPager mPager;
-    private PagerAdapter pagerAdapter;
     int currentPage = 0;
     Timer timer;
 
@@ -55,7 +46,7 @@ public class MainActivity extends FragmentActivity {
         Log.v(TAG,"before pager");
         setContentView(R.layout.activity_main);
         mPager = findViewById(R.id.pager);
-        pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         ((ScreenSlidePagerAdapter) pagerAdapter).addFragment(new mainActFragment1(), "ONE");
         ((ScreenSlidePagerAdapter) pagerAdapter).addFragment(new mainActFragment2(), "TWO");
         ((ScreenSlidePagerAdapter) pagerAdapter).addFragment(new mainActFragment3(), "THREE");
@@ -83,7 +74,7 @@ public class MainActivity extends FragmentActivity {
             }
         }, 500,3000);
 
-        googleSignInButton = findViewById(R.id.sign_in_button);
+        SignInButton googleSignInButton = findViewById(R.id.sign_in_button);
         GoogleSignInOptions.Builder builder = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN);
         builder.requestEmail();
         GoogleSignInOptions gso = builder.build();
@@ -106,18 +97,14 @@ public class MainActivity extends FragmentActivity {
         Log.v(TAG, "onActivityResult");
 
         if (resultCode == Activity.RESULT_OK)
-            switch (requestCode) {
-                case 101:
-                    // The Task returned from this call is always completed, no need to attach
-                    // a listener.
-                    GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-                    SHAREDPREFERENCES = "MyPREFERENCES" + account.getId();
-                    Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-                    Intent intent = new Intent(this, HomeActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                    break;
+            if (requestCode == 101) {
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+                SHAREDPREFERENCES = "MyPREFERENCES" + account.getId();
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                Intent intent = new Intent(this, HomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
             }
     }
 
@@ -127,11 +114,11 @@ public class MainActivity extends FragmentActivity {
         private final List<Fragment> mList = new ArrayList<>();
         private final List<String> mTitleList = new ArrayList<>();
 
-        public ScreenSlidePagerAdapter(FragmentManager fm) {
+        ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        void addFragment(Fragment fragment, String title) {
             mList.add(fragment);
             mTitleList.add(title);
         }

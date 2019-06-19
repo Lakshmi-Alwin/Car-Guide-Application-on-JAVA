@@ -1,7 +1,6 @@
 package com.example.carguide;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,7 +8,6 @@ import android.util.Log;
 
 public class SplashActivity extends AppCompatActivity {
 
-    //private static final String TAG ="CXGF" ;
     Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

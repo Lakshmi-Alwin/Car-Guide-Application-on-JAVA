@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.carguide">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,13 +12,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".EditProfile"></activity>
-        <activity
-            android:name=".ScreenLock"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".EditProfile"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ScreenLock"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".SplashActivity"
+        <activity android:name=".SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,10 +29,10 @@
         <activity
             android:name=".FAQActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".HomeActivity"
+        <activity android:name=".HomeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ProfileActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />

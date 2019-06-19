@@ -3,7 +3,6 @@ package com.example.carguide;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +18,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfile extends AppCompatActivity {
 
-    private Button saveButton, cancelButton;
     private EditText phoneNumber, name, address;
     private TextView email;
     private CircleImageView profilePic;
@@ -33,13 +31,13 @@ public class EditProfile extends AppCompatActivity {
 
         preferences = getSharedPreferences(MainActivity.SHAREDPREFERENCES, Context.MODE_PRIVATE);
         editor = preferences.edit();
-        saveButton = findViewById(R.id.edit_profile_save);
+        Button saveButton = findViewById(R.id.edit_profile_save);
         phoneNumber = findViewById(R.id.edit_profile_phone_number);
         name = findViewById(R.id.edit_profile_name);
         address = findViewById(R.id.edit_profile_address);
         email = findViewById(R.id.edit_profile_email);
         profilePic = findViewById(R.id.edit_profile_pic);
-        cancelButton = findViewById(R.id.edit_profile_cancel);
+        Button cancelButton = findViewById(R.id.edit_profile_cancel);
 
         setData();
 
