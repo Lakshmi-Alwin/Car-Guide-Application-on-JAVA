@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.carguide.R;
-
-
 public class mainActFragment2 extends Fragment {
 
     @Override

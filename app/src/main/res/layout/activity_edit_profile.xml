@@ -49,7 +49,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/edit_profile_name"
         android:layout_marginTop="30dp"
-        android:hint="1234567890"
+        android:hint="Enter your phone number"
         android:ems="10"
         android:textColorHint="@color/white"/>
 

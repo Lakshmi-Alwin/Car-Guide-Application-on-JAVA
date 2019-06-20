@@ -3,7 +3,6 @@ package com.example.carguide;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,8 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -32,32 +29,27 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class account extends Fragment {
 
-    private TextView signout_account;
     private GoogleSignInClient googleSignInClient;
-    public static final String GOOGLE_ACCOUNT = "google_account";
-    private TextView profileName, profileEmail;
+    private TextView profileName;
     private CircleImageView profileImage;
-    private View v;
 
     @Nullable
     @Override
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_account,container,false);
+        View v = inflater.inflate(R.layout.fragment_account, container, false);
 
         Log.v(MainActivity.TAG, "in on create view");
-        signout_account=v.findViewById(R.id.signout_account);
+        TextView signout_account = v.findViewById(R.id.signout_account);
         Log.v(MainActivity.TAG, "after signout");
         profileName = v.findViewById(R.id.profile_text_account);
         Log.v(MainActivity.TAG, "after profile text");
-        //profileEmail = v.findViewById(R.id.profile_email_account);
         profileImage = v.findViewById(R.id.profile_image_account);
         setDataOnView();
 
         signout_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-
                 GoogleSignInOptions.Builder builder = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN);
                 builder.requestEmail();
                 GoogleSignInOptions gso = builder.build();
@@ -106,7 +98,6 @@ public class account extends Fragment {
             profileName.setText(googleSignInAccount.getDisplayName());
         else
             profileName.setText(preferences.getString("clientname", ""));
-        //profileEmail.setText(googleSignInAccount.getEmail());
         Log.v(MainActivity.TAG,"exiting setData");
     }
 }

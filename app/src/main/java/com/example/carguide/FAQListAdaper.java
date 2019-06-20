@@ -19,7 +19,7 @@ public class FAQListAdaper extends RecyclerView.Adapter<FAQListAdaper.ViewHolder
     private String[] faqList,settingslist;
     private int activityno;
 
-    public FAQListAdaper(String[] faqList) {
+    FAQListAdaper(String[] faqList) {
         this.faqList = faqList;
     }
 
@@ -55,10 +55,10 @@ public class FAQListAdaper extends RecyclerView.Adapter<FAQListAdaper.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView faqTextView;
-        public LinearLayout linearLayout;
+        TextView faqTextView;
+        LinearLayout linearLayout;
         public static Context context;
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             context = itemView.getContext();
             this.faqTextView=itemView.findViewById(R.id.faqQuestion);

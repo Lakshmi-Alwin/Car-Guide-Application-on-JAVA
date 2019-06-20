@@ -19,8 +19,8 @@ public class FAQActivity extends AppCompatActivity {
         int position = getIntent().getIntExtra(QUESTIONSNO,-1);
         TextView question = findViewById(R.id.faqQuestion);
         TextView answer = findViewById(R.id.faqAnswer);
-        String quesList[] = getResources().getStringArray(R.array.questions);
-        String ansList[] = getResources().getStringArray(R.array.answers);
+        String[] quesList = getResources().getStringArray(R.array.questions);
+        String[] ansList = getResources().getStringArray(R.array.answers);
 
         question.setText(quesList[position]);
         answer.setText(ansList[position]);
