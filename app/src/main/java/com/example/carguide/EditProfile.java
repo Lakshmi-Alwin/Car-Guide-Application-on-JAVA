@@ -43,7 +43,9 @@ public class EditProfile extends AppCompatActivity implements EditProfileContrac
                     onBackPressed();
                     return;
                 }
-                presenter.putData(phoneNumber.getText().toString(),address.getText().toString(),name.getText().toString());
+                presenter.putAddress(address.getText().toString());
+                presenter.putPhoneNumber(phoneNumber.getText().toString());
+                presenter.putName(name.getText().toString());
                 onBackPressed();
             }
         });

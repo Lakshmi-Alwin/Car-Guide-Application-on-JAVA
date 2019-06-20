@@ -8,7 +8,9 @@ public interface EditProfileContract {
     }
 
     interface Presenter {
-        void putData(String phoneNumber, String address, String name);
+        void putName(String name);
+        void putPhoneNumber(String phoneNumber);
+        void putAddress(String address);
         String getName();
         String getAddress();
         String getPhoneNumber();
