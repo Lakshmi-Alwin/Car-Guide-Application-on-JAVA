@@ -12,20 +12,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".TermsandPrivacyActivity"></activity>
-        <activity android:name=".UnitofMeasureActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".EditProfile" />
-        <activity
-            android:name=".ScreenLock"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".TermsandPrivacyActivity" />
+        <activity android:name=".UnitofMeasureActivity" />
+        <activity android:name=".SettingsActivity" />
         <activity android:name=".EditProfile"
             android:screenOrientation="portrait"/>
         <activity android:name=".ScreenLock"
->
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity android:name=".SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>

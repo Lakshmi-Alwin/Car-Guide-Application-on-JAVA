@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".EditProfile"
     android:background="@color/black">
 
@@ -34,8 +34,10 @@
         android:layout_below="@+id/edit_profile_email"
         android:layout_marginTop="30dp"
         android:hint="Enter your name"
+        android:textCursorDrawable="@color/white"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
         android:textAlignment="center"
         android:id="@+id/edit_profile_name" />
 
@@ -50,6 +52,8 @@
         android:layout_below="@+id/edit_profile_name"
         android:layout_marginTop="30dp"
         android:hint="Enter your phone number"
+        android:textCursorDrawable="@color/white"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:textColorHint="@color/white"/>
 
@@ -62,6 +66,8 @@
         android:layout_below="@+id/edit_profile_phone_number"
         android:layout_marginTop="30dp"
         android:hint="Enter your Address"
+        android:backgroundTint="@color/white"
+        android:textCursorDrawable="@color/white"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
         android:textAlignment="center"/>

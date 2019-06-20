@@ -1,5 +1,6 @@
 package com.example.carguide;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,15 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
     private String[] myDataset={"Unit of Measure","Terms & Privacy"};
-    //private String[] settingslist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +25,13 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         Log.v(MainActivity.TAG,"IN settings");
-        recyclerView = findViewById(R.id.recycler_settings);
+        RecyclerView recyclerView = findViewById(R.id.recycler_settings);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         Log.v(MainActivity.TAG,"before settings adapter");
-        mAdapter = new SettingsListAdapter(myDataset);
+        RecyclerView.Adapter mAdapter = new SettingsListAdapter(myDataset);
         recyclerView.setAdapter(mAdapter);
         Log.v(MainActivity.TAG,"after settings adapter");
     }
@@ -41,40 +39,37 @@ public class SettingsActivity extends AppCompatActivity {
     public class SettingsListAdapter extends RecyclerView.Adapter<SettingsListAdapter.MyViewHolder> {
         private String[] mDataset;
 
-        public class MyViewHolder extends RecyclerView.ViewHolder {
+        class MyViewHolder extends RecyclerView.ViewHolder {
             // each data item is just a string in this case
             TextView textView;
+            LinearLayout linearLayout;
             Context context;
             MyViewHolder(View v) {
                 super(v);
                 context = v.getContext();
                 textView = v.findViewById(R.id.faqQuestion);
+                linearLayout = v.findViewById(R.id.faqLinearLayout);
             }
         }
-
-        // Provide a suitable constructor (depends on the kind of dataset)
-        public SettingsListAdapter(String[] myDataset) {
+        SettingsListAdapter(String[] myDataset) {
             this.mDataset = myDataset;
         }
 
-        // Create new views (invoked by the layout manager)
+        @NonNull
         @Override
-        public SettingsListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+        public SettingsListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
                                                                    int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
             View listItem = layoutInflater.inflate(R.layout.faq_list,parent,false);
-            SettingsListAdapter.MyViewHolder viewHolder = new SettingsListAdapter.MyViewHolder(listItem);
-            return viewHolder;
+            return new MyViewHolder(listItem);
         }
 
         @Override
-        public void onBindViewHolder(MyViewHolder holder, int position) {
-            // - get element from your dataset at this position
-            // - replace the contents of the view with that element
+        public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
             Log.v(MainActivity.TAG,"inside bindviewholder");
             holder.textView.setText(this.mDataset[position]);
             final int p = position;
-            holder.textView.setOnClickListener(new View.OnClickListener() {
+            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = null;
@@ -88,7 +83,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         }
 
-        // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
             return mDataset.length;
