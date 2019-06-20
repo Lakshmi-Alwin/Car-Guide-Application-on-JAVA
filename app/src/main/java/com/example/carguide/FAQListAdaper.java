@@ -16,7 +16,8 @@ import static com.example.carguide.support.QUESTIONSNO;
 
 public class FAQListAdaper extends RecyclerView.Adapter<FAQListAdaper.ViewHolder> {
 
-    private String[] faqList;
+    private String[] faqList,settingslist;
+    private int activityno;
 
     public FAQListAdaper(String[] faqList) {
         this.faqList = faqList;
@@ -31,20 +32,22 @@ public class FAQListAdaper extends RecyclerView.Adapter<FAQListAdaper.ViewHolder
         return viewHolder;
     }
 
-    @Override
+    //@Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String question = faqList[position];
-        final int p = position;
-        holder.faqTextView.setText(question);
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, FAQActivity.class);
-                intent.putExtra(QUESTIONSNO, p);
-                context.startActivity(intent);
-            }
-        });
-    }
+            String question = faqList[position];
+            final int p = position;
+            holder.faqTextView.setText(question);
+            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, FAQActivity.class);
+                    intent.putExtra(QUESTIONSNO, p);
+                    context.startActivity(intent);
+                }
+            });
+        }
+
+
 
     @Override
     public int getItemCount() {

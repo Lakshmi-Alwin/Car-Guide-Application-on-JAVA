@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UnitofMeasureActivity"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+       >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/vector_left"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                android:id="@+id/vector_left"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="110dp"
+        android:orientation="vertical"
+        android:outlineSpotShadowColor="@color/white"
+        android:outlineAmbientShadowColor="@color/white"
+        >
+
+        <RadioButton
+            android:id="@+id/radio_km"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:onClick="onRadioButtonClicked"
+            android:text="Kilometer"
+            android:textSize="30dp"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:id="@+id/radio_miles"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:onClick="onRadioButtonClicked"
+            android:text="Miles"
+            android:textSize="30dp"
+            android:textColor="@color/white"/>
+    </RadioGroup>
+
+</RelativeLayout>

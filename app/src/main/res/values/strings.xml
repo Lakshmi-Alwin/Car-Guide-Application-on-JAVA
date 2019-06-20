@@ -13,6 +13,14 @@
     <string name="we_got">We got your back, ask us anything car related\n and we will have it sorted.</string>
     <string name="assistance">ROAD SIDE ASSISTANCE</string>
     <string name="get_support">Get support when you need it most.</string>
+    <string name="privacy_policy">A number of major, overarching privacy regulations have been made law in the last few years, and they’re
+        not restricted to single nations. One of these regulations covers 28 countries, some apply to two or three countries, and one was
+        developed by one state (California) but manages to apply to the entire USA.The most significant regulation is the EU’s
+        (European Union’s) General Data Protection Regulation (GDPR), which came into effect in May of 2018 and quite rigorously secures
+        the confidentiality of the personal information of all those in the 28 EU countries. It’s 88 pages long and goes further than any
+        other regulation to establish a safe online environment for consumers.Australia’s Privacy Act of 1988 was drafted before
+        information technology was a major threat to personal privacy. However, its principles still apply today and the letter of the law
+        has been updated to reflect current conditions.</string>
 
 
     <string-array name="questions">

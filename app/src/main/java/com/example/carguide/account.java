@@ -57,10 +57,7 @@ public class account extends Fragment {
         signout_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-          /*
-          Sign-out is initiated by simply calling the googleSignInClient.signOut API. We add a
-          listener which will be invoked once the sign out is the successful
-           */
+
                 GoogleSignInOptions.Builder builder = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN);
                 builder.requestEmail();
                 GoogleSignInOptions gso = builder.build();
@@ -84,6 +81,15 @@ public class account extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),EditProfile.class);
+                startActivity(intent);
+            }
+        });
+
+        RelativeLayout settings = v.findViewById(R.id.settings_account);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),SettingsActivity.class);
                 startActivity(intent);
             }
         });
