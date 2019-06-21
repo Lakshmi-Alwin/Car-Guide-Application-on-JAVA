@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        MainActivity.SHAREDPREFERENCES = "MyPREFERENCES" + GoogleSignIn.getLastSignedInAccount(this).getId();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new vehicle()).commit();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
