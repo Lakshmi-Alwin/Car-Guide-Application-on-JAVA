@@ -17,6 +17,13 @@
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
+    <style name="vehicle_page">font-family: Ford Antenna;
+        font-size: 30px;
+        line-height: 44px;
+        text-align: center;
+        letter-spacing: 0.1em;
+        color: #FFFFFF;
+    </style>
 
 
 </resources>

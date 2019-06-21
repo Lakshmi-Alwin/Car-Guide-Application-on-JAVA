@@ -3,21 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_dark"
+    android:background="@color/black"
     tools:context=".vehicle">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black">
+        android:background="@color/black"
+        >
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/vehicle"
+        android:text="Welcome"
+        android:textAppearance="@style/vehicle_page"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
+        android:textSize="40dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="30dp"
         />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/welcome"
+            android:id="@+id/vehiclepage_name"
+            android:layout_marginTop="30dp"
+            android:textAppearance="@style/vehicle_page"
+            android:textSize="35dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/description"
+            android:layout_below="@+id/vehiclepage_name"
+            android:layout_marginTop="30dp"
+            android:textAppearance="@style/vehicle_page"
+            android:text="@string/desc"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"/>
+
+        <ImageView
+            android:id="@+id/car_vehiclepage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vehicle_page"
+            android:layout_below="@+id/description"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 </FrameLayout>
