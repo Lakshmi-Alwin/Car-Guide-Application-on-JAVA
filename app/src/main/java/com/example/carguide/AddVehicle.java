@@ -2,7 +2,10 @@ package com.example.carguide;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Interpolator;
@@ -12,12 +15,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.regex.Pattern;
+
 public class AddVehicle extends AppCompatActivity {
 
     ImageView vectorLeft, outerRing, midRing, innerRing;
     Button addVehicle;
     EditText vin, nickName;
     TextView result;
+    private static Pattern ALPHANUMERICUPPERCASE = Pattern.compile("^[A-Z0-9]*$");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +86,17 @@ public class AddVehicle extends AppCompatActivity {
         addVehicle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String editTextVin = vin.getText().toString();
+                if(editTextVin.length() != 17)
+                {
+                    vin.setError("VIN should have 17 characters");
+                    return;
+                }
+                if(!isAlphaNumericUpperCase(editTextVin))
+                {
+                    vin.setError("VIN should only contain uppercase letters and numbers");
+                    return;
+                }
                 vectorLeft.setVisibility(View.GONE);
                 vin.setVisibility(View.GONE);
                 nickName.setVisibility(View.GONE);
@@ -89,7 +106,23 @@ public class AddVehicle extends AppCompatActivity {
                 innerRing.setVisibility(View.VISIBLE);
                 midRing.setVisibility(View.VISIBLE);
                 outerRing.setVisibility(View.VISIBLE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.SHAREDPREFERENCES, MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("VIN", editTextVin);
+                        editor.apply();
+                        Intent intent = new Intent(AddVehicle.this, HomeActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                }, 2000);
             }
         });
+    }
+
+    private boolean isAlphaNumericUpperCase(String s) {
+        return ALPHANUMERICUPPERCASE.matcher(s).find();
     }
 }

@@ -14,10 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AddVehicle"></activity>
-        <activity android:name=".TermsandPrivacyActivity" />
-        <activity android:name=".UnitofMeasureActivity" />
-        <activity android:name=".SettingsActivity" />
+        <activity
+            android:name=".AddVehicle"
+            android:screenOrientation="portrait" />
+        <activity android:name=".TermsandPrivacyActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UnitofMeasureActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SettingsActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".EditProfile"
             android:screenOrientation="portrait" />

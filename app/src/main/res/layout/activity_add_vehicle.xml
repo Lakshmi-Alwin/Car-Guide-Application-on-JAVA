@@ -23,7 +23,7 @@
         android:id="@+id/vin"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:inputType="number"
+        android:inputType="text"
         android:outlineSpotShadowColor="@color/white"
         android:outlineAmbientShadowColor="@color/white" />
 
