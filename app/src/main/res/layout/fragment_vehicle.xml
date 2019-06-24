@@ -9,53 +9,56 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
-        >
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:textAppearance="@style/vehicle_page"
-        android:textColor="@color/white"
-        android:textSize="40dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginLeft="30dp"
-        />
+        android:background="@color/black">
 
         <TextView
+            android:id="@+id/welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="120dp"
+            android:text="Welcome"
+            android:textAppearance="@style/vehicle_page"
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            android:layout_marginStart="30dp" />
+
+        <TextView
+            android:id="@+id/vehicle_page_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/welcome"
-            android:id="@+id/vehiclepage_name"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:textColor="@color/white"
             android:textAppearance="@style/vehicle_page"
             android:textSize="35dp"
             android:textColor="@color/white"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"/>
 
+
         <TextView
+            android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/description"
-            android:layout_below="@+id/vehiclepage_name"
+            android:layout_below="@+id/vehicle_page_name"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
-            android:textAppearance="@style/vehicle_page"
-            android:text="@string/desc"
-            android:textColor="@color/white"
-            android:textSize="20dp"
             android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp"/>
+            android:text="@string/desc"
+            android:textAppearance="@style/vehicle_page"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
         <ImageView
             android:id="@+id/car_vehiclepage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/vehicle_page"
             android:layout_below="@+id/description"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"/>
+            android:src="@drawable/vehicle_page" />
     </RelativeLayout>
 </FrameLayout>
