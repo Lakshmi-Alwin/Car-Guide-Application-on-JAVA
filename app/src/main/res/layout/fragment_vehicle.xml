@@ -33,7 +33,11 @@
             android:layout_marginRight="30dp"
             android:textColor="@color/white"
             android:textAppearance="@style/vehicle_page"
-            android:textSize="35dp" />
+            android:textSize="35dp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
+
 
         <TextView
             android:id="@+id/description"
