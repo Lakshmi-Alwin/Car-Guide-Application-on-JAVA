@@ -36,7 +36,9 @@
            android:orientation="horizontal"
            android:weightSum="2"
            android:layout_below="@+id/profile_text_account"
-           android:layout_marginTop="25dp">
+           android:layout_marginTop="25dp"
+           android:layout_marginLeft="30dp"
+           android:layout_marginRight="30dp">
 
            <LinearLayout
                android:layout_width="0dp"
@@ -116,7 +118,7 @@
            android:textColor="@color/white"
            android:text="LOG OUT"
            android:textAppearance="@style/complete_co"
-           android:textSize="20dp"/>
+           android:textSize="15dp"/>
 
    </RelativeLayout>
 </FrameLayout>

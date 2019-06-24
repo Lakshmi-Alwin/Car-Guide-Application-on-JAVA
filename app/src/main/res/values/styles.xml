@@ -9,6 +9,7 @@
 
     </style>
     <style name="complete_co">
+        font-family: Ford Antenna;
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
