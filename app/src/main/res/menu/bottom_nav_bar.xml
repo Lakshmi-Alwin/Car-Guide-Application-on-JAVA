@@ -2,14 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/car"
-        android:icon="@drawable/vehicle"
-        />
-
+        android:icon="@drawable/vehicle" />
     <item android:id="@+id/help"
-        android:icon="@drawable/guide_active"
-        />
+        android:icon="@drawable/guide_active" />
     <item android:id="@+id/account"
-        android:icon="@drawable/settings_active"
-        />
+        android:icon="@drawable/settings_active" />
 
 </menu>
