@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
                         Log.v(MainActivity.TAG, "account fragment");
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment, "profile_fragment_tag").commit();
                 return true;
 
             }
