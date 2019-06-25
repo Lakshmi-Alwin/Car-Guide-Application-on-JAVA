@@ -78,6 +78,10 @@ public class AddVehicle extends AppCompatActivity {
             nickName.setVisibility(View.GONE);
             addVehicle.setVisibility(View.GONE);
 
+            // Save vehicle vin/nickname to SharedPreferences
+            PreferencesManager.saveVIN(vin.getText().toString());
+            PreferencesManager.saveVehicleNickName(nickName.getText().toString());
+
             result.setVisibility(View.VISIBLE);
             innerRing.setVisibility(View.VISIBLE);
             midRing.setVisibility(View.VISIBLE);
