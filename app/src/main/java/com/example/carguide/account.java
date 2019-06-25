@@ -45,43 +45,30 @@ public class account extends Fragment {
         profileImage = v.findViewById(R.id.profile_image_account);
         setDataOnView();
 
-        signout_account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                GoogleSignInOptions.Builder builder = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN);
-                builder.requestEmail();
-                GoogleSignInOptions gso = builder.build();
-                googleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
-                googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-
-                        Intent intent=new Intent(getActivity(),MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                        getActivity().finish();
-                    }
-                });
-            }
+        signout_account.setOnClickListener(view -> {
+            GoogleSignInOptions.Builder builder = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN);
+            builder.requestEmail();
+            GoogleSignInOptions gso = builder.build();
+            googleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
+            googleSignInClient.signOut().addOnCompleteListener(task -> {
+                Intent intent=new Intent(getActivity(),MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                getActivity().finish();
+            });
         });
 
         RelativeLayout editProfile = v.findViewById(R.id.edit_profile_account);
-        editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),EditProfile.class);
-                startActivity(intent);
-            }
+        editProfile.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(),EditProfile.class);
+            startActivity(intent);
         });
 
         RelativeLayout settings = v.findViewById(R.id.settings_account);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),SettingsActivity.class);
-                startActivity(intent);
-            }
+        settings.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(),SettingsActivity.class);
+            startActivity(intent);
         });
         return v;
     }
@@ -91,7 +78,7 @@ public class account extends Fragment {
         GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(getActivity());
         Log.v(MainActivity.TAG,"After getting account");
         Picasso.get().load(googleSignInAccount.getPhotoUrl()).centerInside().fit().into(profileImage);
-        if(!PreferencesManager.sharedPreferences.contains(PreferencesManager.CLIENT_NAME))
+        if(PreferencesManager.getName().equals(""))
             profileName.setText(googleSignInAccount.getDisplayName());
         else
             profileName.setText(PreferencesManager.getName());
