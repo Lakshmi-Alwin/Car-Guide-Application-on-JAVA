@@ -1,14 +1,15 @@
 package com.example.carguide;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.squareup.picasso.Picasso;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfile extends AppCompatActivity {
@@ -32,26 +33,18 @@ public class EditProfile extends AppCompatActivity {
 
         setData();
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(name.getText().toString().isEmpty() || address.getText().toString().isEmpty() || phoneNumber.getText().toString().isEmpty()) {
-                    onBackPressed();
-                    return;
-                }
-                PreferencesManager.saveAddress(address.getText().toString());
-                PreferencesManager.savePhoneNumber(phoneNumber.getText().toString());
-                PreferencesManager.saveName(name.getText().toString());
+        saveButton.setOnClickListener(v -> {
+            if(name.getText().toString().isEmpty() || address.getText().toString().isEmpty() || phoneNumber.getText().toString().isEmpty()) {
                 onBackPressed();
-            }
-        });
+                return;
+        }
+        PreferencesManager.saveAddress(address.getText().toString());
+        PreferencesManager.savePhoneNumber(phoneNumber.getText().toString());
+        PreferencesManager.saveName(name.getText().toString());
+        onBackPressed();
+    });
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        cancelButton.setOnClickListener((v) -> onBackPressed());
     }
 
     private void setData() {

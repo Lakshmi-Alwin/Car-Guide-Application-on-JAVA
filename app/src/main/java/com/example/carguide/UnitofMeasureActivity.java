@@ -14,12 +14,7 @@ public class UnitofMeasureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unitof_measure);
         ImageView left = findViewById(R.id.vector_left);
-        left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UnitofMeasureActivity.super.onBackPressed();
-            }
-        });
+        left.setOnClickListener(v -> UnitofMeasureActivity.super.onBackPressed());
     }
 
     public void onRadioButtonClicked(View view) {

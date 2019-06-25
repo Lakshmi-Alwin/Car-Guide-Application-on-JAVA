@@ -55,13 +55,11 @@ public class MainActivity extends FragmentActivity {
         Log.v(TAG,"after pager");
 
         final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES) {
-                    currentPage = 0;
-                }
-                mPager.setCurrentItem(currentPage++, true);
+        final Runnable Update = () -> {
+            if (currentPage == NUM_PAGES) {
+                currentPage = 0;
             }
+            mPager.setCurrentItem(currentPage++, true);
         };
 
         timer = new Timer(); // This will create a new Thread
@@ -78,12 +76,9 @@ public class MainActivity extends FragmentActivity {
         GoogleSignInOptions gso = builder.build();
         googleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        googleSignInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signInIntent = googleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, 101);
-            }
+        googleSignInButton.setOnClickListener(v -> {
+            Intent signInIntent = googleSignInClient.getSignInIntent();
+            startActivityForResult(signInIntent, 101);
         });
 
         Log.v(TAG,"on Create");

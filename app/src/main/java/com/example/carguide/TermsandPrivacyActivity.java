@@ -13,11 +13,6 @@ public class TermsandPrivacyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_termsand_privacy);
         ImageView left = findViewById(R.id.vector_left);
-        left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TermsandPrivacyActivity.super.onBackPressed();
-            }
-        });
+        left.setOnClickListener(v -> TermsandPrivacyActivity.super.onBackPressed());
     }
 }
