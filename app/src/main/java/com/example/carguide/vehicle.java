@@ -25,12 +25,9 @@ public class vehicle extends Fragment {
         TextView profileName = v.findViewById(R.id.vehicle_page_name);
         GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(getActivity());
         ImageView vehicle = v.findViewById(R.id.car_vehiclepage);
-        vehicle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AddVehicle.class);
-                startActivity(intent);
-            }
+        vehicle.setOnClickListener(v1 -> {
+            Intent intent = new Intent(v1.getContext(), AddVehicle.class);
+            startActivity(intent);
         });
         if(!PreferencesManager.sharedPreferences.contains(PreferencesManager.CLIENT_NAME))
             profileName.setText(googleSignInAccount.getDisplayName());
