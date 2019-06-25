@@ -28,7 +28,6 @@ import java.util.TimerTask;
 
 public class MainActivity extends FragmentActivity {
 
-    public static String SHAREDPREFERENCES;
     public static final String TAG = "AndroidClarified";
     private GoogleSignInClient googleSignInClient;
 
@@ -56,13 +55,11 @@ public class MainActivity extends FragmentActivity {
         Log.v(TAG,"after pager");
 
         final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES) {
-                    currentPage = 0;
-                }
-                mPager.setCurrentItem(currentPage++, true);
+        final Runnable Update = () -> {
+            if (currentPage == NUM_PAGES) {
+                currentPage = 0;
             }
+            mPager.setCurrentItem(currentPage++, true);
         };
 
         timer = new Timer(); // This will create a new Thread
@@ -79,12 +76,9 @@ public class MainActivity extends FragmentActivity {
         GoogleSignInOptions gso = builder.build();
         googleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        googleSignInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signInIntent = googleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, 101);
-            }
+        googleSignInButton.setOnClickListener(v -> {
+            Intent signInIntent = googleSignInClient.getSignInIntent();
+            startActivityForResult(signInIntent, 101);
         });
 
         Log.v(TAG,"on Create");
@@ -98,7 +92,7 @@ public class MainActivity extends FragmentActivity {
         if (resultCode == Activity.RESULT_OK)
             if (requestCode == 101) {
                 GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-                SHAREDPREFERENCES = "MyPREFERENCES" + account.getId();
+                PreferencesManager.sharedAccountID = account.getId();
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
                 Intent intent = new Intent(this, HomeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

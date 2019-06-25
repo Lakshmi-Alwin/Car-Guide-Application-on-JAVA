@@ -1,6 +1,5 @@
 package com.example.carguide;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -21,9 +20,11 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        MainActivity.SHAREDPREFERENCES = "MyPREFERENCES" + GoogleSignIn.getLastSignedInAccount(this).getId();
-        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.SHAREDPREFERENCES, MODE_PRIVATE);
-        final String vin = sharedPreferences.getString("VIN", "");
+
+        PreferencesManager.sharedAccountID = GoogleSignIn.getLastSignedInAccount(this).getId();
+        PreferencesManager.sharedPreferences = getSharedPreferences(PreferencesManager.sharedAccountID, MODE_PRIVATE);
+
+        final String vin = PreferencesManager.getVIN();
         if(vin.length() == 0)
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new vehicle()).commit();
         else getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VehiclePage()).commit();
@@ -56,10 +57,10 @@ public class HomeActivity extends AppCompatActivity {
                         support_tab_underline.setVisibility(View.GONE);
                         account_tab_underline.setVisibility(View.VISIBLE);
                         selectedFragment = new account();
-                        Log.v(MainActivity.TAG, "acount fragemnt");
+                        Log.v(MainActivity.TAG, "account fragment");
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment, "profile_fragment_tag").commit();
                 return true;
 
             }

@@ -28,13 +28,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/welcome"
-            android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
             android:textColor="@color/white"
             android:textAppearance="@style/vehicle_page"
             android:textSize="35dp"/>
-
 
         <TextView
             android:id="@+id/description"

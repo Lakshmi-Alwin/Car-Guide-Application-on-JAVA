@@ -25,11 +25,6 @@ public class FAQActivity extends AppCompatActivity {
         question.setText(quesList[position]);
         answer.setText(ansList[position]);
         ImageView vector = findViewById(R.id.vector_left);
-        vector.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FAQActivity.super.onBackPressed();
-            }
-        });
+        vector.setOnClickListener(v -> FAQActivity.super.onBackPressed());
     }
 }

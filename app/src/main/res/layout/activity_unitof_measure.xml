@@ -41,8 +41,7 @@
             android:text="Kilometer"
             android:textSize="30dp"
             android:textColor="@color/white"
-            android:buttonTint="@color/white"
-            android:checked="true"/>
+            android:buttonTint="@color/white"/>
 
         <RadioButton
             android:id="@+id/radio_miles"
