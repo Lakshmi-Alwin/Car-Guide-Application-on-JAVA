@@ -69,16 +69,13 @@ public class SettingsActivity extends AppCompatActivity {
             Log.v(MainActivity.TAG,"inside bindviewholder");
             holder.textView.setText(this.mDataset[position]);
             final int p = position;
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = null;
-                    if(p==0)
-                        intent = new Intent(v.getContext(), UnitofMeasureActivity.class);
-                    if(p==1)
-                        intent = new Intent(v.getContext(), TermsandPrivacyActivity.class);
-                    startActivity(intent);
-                }
+            holder.linearLayout.setOnClickListener(v -> {
+                Intent intent = null;
+                if(p==0)
+                    intent = new Intent(v.getContext(), UnitofMeasureActivity.class);
+                if(p==1)
+                    intent = new Intent(v.getContext(), TermsandPrivacyActivity.class);
+                startActivity(intent);
             });
 
         }
