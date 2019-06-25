@@ -30,33 +30,26 @@ public class support extends Fragment implements SupportContract.View {
         ImageView callLogo = v.findViewById(R.id.callLogo);
         ImageView emailLogo = v.findViewById(R.id.emailLogo);
 
-        callLogo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_CALL);
-                intent.setData(Uri.parse("tel:9409261943"));
-                presenter.onClickSupport(getActivity());
-                startActivity(intent);
-            }
+        callLogo.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:9409261943"));
+            presenter.onClickSupport(getActivity());
+            startActivity(intent);
         });
 
-        emailLogo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"abc@xyz.com"});
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Support Needed");
-                intent.setType("message/rfc822");
-                startActivity(Intent.createChooser(intent, "Choose your email client"));
-            }
+        emailLogo.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"abc@xyz.com"});
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Support Needed");
+            intent.setType("message/rfc822");
+            startActivity(Intent.createChooser(intent, "Choose your email client"));
         });
 
         String []questions = getResources().getStringArray(R.array.questions);
         RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
-        FAQListAdaper adaper = new FAQListAdaper(questions);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
-        recyclerView.setAdapter(adaper);
+        recyclerView.setAdapter(new FAQListAdapter(questions));
         return  v;
     }
 }

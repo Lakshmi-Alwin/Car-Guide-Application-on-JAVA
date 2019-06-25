@@ -11,15 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.example.carguide.FAQListAdaper.ViewHolder.context;
 import static com.example.carguide.support.QUESTIONSNO;
 
-public class FAQListAdaper extends RecyclerView.Adapter<FAQListAdaper.ViewHolder> {
+public class FAQListAdapter extends RecyclerView.Adapter<FAQListAdapter.ViewHolder> {
 
-    private String[] faqList,settingslist;
-    private int activityno;
+    private String[] faqList;
+    public static Context context;
 
-    FAQListAdaper(String[] faqList) {
+
+    FAQListAdapter(String[] faqList) {
         this.faqList = faqList;
     }
 
@@ -37,13 +37,10 @@ public class FAQListAdaper extends RecyclerView.Adapter<FAQListAdaper.ViewHolder
             String question = faqList[position];
             final int p = position;
             holder.faqTextView.setText(question);
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, FAQActivity.class);
-                    intent.putExtra(QUESTIONSNO, p);
-                    context.startActivity(intent);
-                }
+            holder.linearLayout.setOnClickListener(v -> {
+                Intent intent = new Intent(context, FAQActivity.class);
+                intent.putExtra(QUESTIONSNO, p);
+                context.startActivity(intent);
             });
         }
 
@@ -57,7 +54,6 @@ public class FAQListAdaper extends RecyclerView.Adapter<FAQListAdaper.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView faqTextView;
         LinearLayout linearLayout;
-        public static Context context;
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             context = itemView.getContext();
