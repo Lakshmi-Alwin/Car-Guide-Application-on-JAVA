@@ -56,5 +56,5 @@ public class PreferencesManager {
     public static String getPhoneNumber() { return sharedPreferences.getString(CLIENT_PHONE, ""); }
     public static String getVIN() { return sharedPreferences.getString(VIN_NUM, "" ); }
     public static String getVehicleNickname() { return sharedPreferences.getString(VEHICLE_NICKNAME, "" ); }
-
+    public static String getUnitOfMeasurement() { return sharedPreferences.getString(UNIT_OF_MEASUREMENT, ""); }
 }
