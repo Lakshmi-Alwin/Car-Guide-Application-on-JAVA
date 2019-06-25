@@ -3,7 +3,6 @@ package com.example.carguide;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -109,10 +108,7 @@ public class AddVehicle extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.SHAREDPREFERENCES, MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("VIN", editTextVin);
-                        editor.apply();
+                        PreferencesManager.saveVIN(editTextVin);
                         Intent intent = new Intent(AddVehicle.this, HomeActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);

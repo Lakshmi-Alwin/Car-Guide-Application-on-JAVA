@@ -1,8 +1,6 @@
 package com.example.carguide;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,7 +24,6 @@ public class vehicle extends Fragment {
 
         TextView profileName = v.findViewById(R.id.vehicle_page_name);
         GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(getActivity());
-        SharedPreferences preferences = getActivity().getSharedPreferences(MainActivity.SHAREDPREFERENCES, Context.MODE_PRIVATE);
         ImageView vehicle = v.findViewById(R.id.car_vehiclepage);
         vehicle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,10 +32,10 @@ public class vehicle extends Fragment {
                 startActivity(intent);
             }
         });
-        if(!preferences.contains("clientname"))
+        if(!PreferencesManager.sharedPreferences.contains(PreferencesManager.CLIENT_NAME))
             profileName.setText(googleSignInAccount.getDisplayName());
         else
-            profileName.setText(preferences.getString("clientname", ""));
+            profileName.setText(PreferencesManager.getName());
         return v;
     }
 }

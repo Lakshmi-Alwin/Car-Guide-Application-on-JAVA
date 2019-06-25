@@ -1,8 +1,6 @@
 package com.example.carguide;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,9 +11,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class EditProfile extends AppCompatActivity implements EditProfileContract.View {
+public class EditProfile extends AppCompatActivity {
 
-    private EditProfileContract.Presenter presenter;
     private EditText phoneNumber, name, address;
     private TextView email;
     private CircleImageView profilePic;
@@ -25,7 +22,6 @@ public class EditProfile extends AppCompatActivity implements EditProfileContrac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        presenter = new EditProfilePresenter(this);
         Button saveButton = findViewById(R.id.edit_profile_save);
         phoneNumber = findViewById(R.id.edit_profile_phone_number);
         name = findViewById(R.id.edit_profile_name);
@@ -43,9 +39,9 @@ public class EditProfile extends AppCompatActivity implements EditProfileContrac
                     onBackPressed();
                     return;
                 }
-                presenter.putAddress(address.getText().toString());
-                presenter.putPhoneNumber(phoneNumber.getText().toString());
-                presenter.putName(name.getText().toString());
+                PreferencesManager.saveAddress(address.getText().toString());
+                PreferencesManager.savePhoneNumber(phoneNumber.getText().toString());
+                PreferencesManager.saveName(name.getText().toString());
                 onBackPressed();
             }
         });
@@ -62,16 +58,12 @@ public class EditProfile extends AppCompatActivity implements EditProfileContrac
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         email.setText(account.getEmail());
         Picasso.get().load(account.getPhotoUrl()).centerInside().fit().into(profilePic);
-        if(presenter.getName().equals(""))
+        if(PreferencesManager.getName().equals(""))
             name.setText(account.getDisplayName());
         else
-            name.setText(presenter.getName());
-        address.setText(presenter.getAddress());
-        phoneNumber.setText(presenter.getPhoneNumber());
+            name.setText(PreferencesManager.getName());
+        address.setText(PreferencesManager.getAddress());
+        phoneNumber.setText(PreferencesManager.getPhone());
     }
 
-    @Override
-    public SharedPreferences getSharedPrefernces() {
-        return getSharedPreferences(MainActivity.SHAREDPREFERENCES, Context.MODE_PRIVATE);
-    }
 }

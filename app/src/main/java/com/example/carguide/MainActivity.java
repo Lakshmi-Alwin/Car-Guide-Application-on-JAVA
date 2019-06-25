@@ -28,7 +28,6 @@ import java.util.TimerTask;
 
 public class MainActivity extends FragmentActivity {
 
-    public static String SHAREDPREFERENCES;
     public static final String TAG = "AndroidClarified";
     private GoogleSignInClient googleSignInClient;
 
@@ -98,7 +97,7 @@ public class MainActivity extends FragmentActivity {
         if (resultCode == Activity.RESULT_OK)
             if (requestCode == 101) {
                 GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-                SHAREDPREFERENCES = "MyPREFERENCES" + account.getId();
+                PreferencesManager.sharedAccountID = account.getId();
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
                 Intent intent = new Intent(this, HomeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

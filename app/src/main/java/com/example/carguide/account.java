@@ -1,8 +1,6 @@
 package com.example.carguide;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -93,11 +91,10 @@ public class account extends Fragment {
         GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(getActivity());
         Log.v(MainActivity.TAG,"After getting account");
         Picasso.get().load(googleSignInAccount.getPhotoUrl()).centerInside().fit().into(profileImage);
-        SharedPreferences preferences = getActivity().getSharedPreferences(MainActivity.SHAREDPREFERENCES, Context.MODE_PRIVATE);
-        if(!preferences.contains("clientname"))
+        if(!PreferencesManager.sharedPreferences.contains(PreferencesManager.CLIENT_NAME))
             profileName.setText(googleSignInAccount.getDisplayName());
         else
-            profileName.setText(preferences.getString("clientname", ""));
+            profileName.setText(PreferencesManager.getName());
         Log.v(MainActivity.TAG,"exiting setData");
     }
 }

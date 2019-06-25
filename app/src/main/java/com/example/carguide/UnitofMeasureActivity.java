@@ -1,8 +1,6 @@
 package com.example.carguide;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,15 +24,13 @@ public class UnitofMeasureActivity extends AppCompatActivity {
 
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
-        SharedPreferences preferences = getSharedPreferences(MainActivity.SHAREDPREFERENCES, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
         switch(view.getId()) {
             case R.id.radio_km:
-                editor.putString("unitofmeasurement","Kilometer");
+                PreferencesManager.saveUnitOfMeasurement("Kilometer");
                 if (checked)
                     break;
             case R.id.radio_miles:
-                editor.putString("unitofmeasurement","Miles");
+                PreferencesManager.saveUnitOfMeasurement("Miles");
                 if (checked)
                     break;
         }
