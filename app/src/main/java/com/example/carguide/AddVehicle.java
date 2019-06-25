@@ -13,16 +13,18 @@ import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.regex.Pattern;
 
 public class AddVehicle extends AppCompatActivity {
 
-    ImageView vectorLeft, outerRing, midRing, innerRing;
+    ImageView vectorLeft, outerRing, midRing, innerRing, successfulVin;
     Button addVehicle;
     EditText vin, nickName;
     TextView result;
+    RelativeLayout loading_layLayout;
     private static Pattern ALPHANUMERICUPPERCASE = Pattern.compile("^[A-Z0-9]*$");
 
     @Override
@@ -37,13 +39,12 @@ public class AddVehicle extends AppCompatActivity {
         midRing = findViewById(R.id.midRing);
         innerRing = findViewById(R.id.innerRing);
         result = findViewById(R.id.vehicle_result);
+        successfulVin = findViewById(R.id.successful_vin);
+        loading_layLayout=findViewById(R.id.loading_layout);
 
-        result.setVisibility(View.GONE);
-        innerRing.setVisibility(View.GONE);
-        midRing.setVisibility(View.GONE);
-        outerRing.setVisibility(View.GONE);
+        successfulVin.setVisibility(View.GONE);
 
-        Animation outerAnimation = new RotateAnimation(0, 360, 300, 300);
+        Animation outerAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         outerAnimation.setDuration(2000);
         outerAnimation.setRepeatCount(-1);
         outerAnimation.setInterpolator(new Interpolator() {
@@ -54,7 +55,7 @@ public class AddVehicle extends AppCompatActivity {
         });
         outerRing.setAnimation(outerAnimation);
 
-        Animation middleAnimation = new RotateAnimation(0, 360, 210, 210);
+        Animation middleAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         middleAnimation.setDuration(2000);
         middleAnimation.setRepeatCount(-1);
         middleAnimation.setInterpolator(new Interpolator() {
@@ -65,7 +66,7 @@ public class AddVehicle extends AppCompatActivity {
         });
         midRing.setAnimation(middleAnimation);
 
-        Animation innerAnimation = new RotateAnimation(0, 360, 225, 225);
+        Animation innerAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         innerAnimation.setDuration(2000);
         innerAnimation.setRepeatCount(-1);
         innerAnimation.setInterpolator(new Interpolator() {
@@ -75,6 +76,8 @@ public class AddVehicle extends AppCompatActivity {
             }
         });
         innerRing.setAnimation(innerAnimation);
+
+        loading_layLayout.setVisibility(View.GONE);
 
         vectorLeft.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,10 +105,22 @@ public class AddVehicle extends AppCompatActivity {
                 nickName.setVisibility(View.GONE);
                 addVehicle.setVisibility(View.GONE);
 
-                result.setVisibility(View.VISIBLE);
-                innerRing.setVisibility(View.VISIBLE);
-                midRing.setVisibility(View.VISIBLE);
-                outerRing.setVisibility(View.VISIBLE);
+                loading_layLayout.setVisibility(View.VISIBLE);
+                loading_layLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loading_layLayout.setVisibility(View.GONE);
+                    }
+                },3000);
+
+                successfulVin.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        successfulVin.setRotation(outerRing.getRotation());
+                        successfulVin.setVisibility(View.VISIBLE);
+                    }
+                },3000);
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -117,7 +132,7 @@ public class AddVehicle extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }
-                }, 2000);
+                }, 6000);
             }
         });
     }

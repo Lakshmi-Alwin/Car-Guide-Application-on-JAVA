@@ -7,78 +7,96 @@
     tools:context=".AddVehicle">
 
     <ImageView
+        android:id="@+id/vector_left"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/vector_left"
-        android:id="@+id/vector_left"/>
+        android:src="@drawable/vector_left" />
 
     <EditText
+        android:id="@+id/vin"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@+id/vector_left"
-        android:layout_marginTop="30dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
         android:hint="Enter your VIN"
-        android:id="@+id/vin"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
         android:inputType="text"
+        android:outlineAmbientShadowColor="@color/white"
         android:outlineSpotShadowColor="@color/white"
-        android:outlineAmbientShadowColor="@color/white" />
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
 
     <EditText
+        android:id="@+id/vehicle_nickname"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@+id/vin"
-        android:layout_marginTop="30dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
         android:hint="Nickname for your vehicle"
-        android:id="@+id/vehicle_nickname"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:outlineAmbientShadowColor="@color/white"
         android:outlineSpotShadowColor="@color/white"
-        android:outlineAmbientShadowColor="@color/white" />
-    <TextView
-        android:layout_width="200dp"
-        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="LOADING"
-        android:id="@+id/vehicle_result"
-        android:textSize="20dp"
-        android:textColor="@color/white" />
-    <ImageView
-        android:layout_width="225dp"
-        android:layout_height="225dp"
-        android:src="@drawable/inner_ring"
-        android:layout_centerInParent="true"
-        android:id="@+id/innerRing"/>
+        android:id="@+id/loading_layout">
+
+        <TextView
+            android:id="@+id/vehicle_result"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="LOADING"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/innerRing"
+            android:layout_width="225dp"
+            android:layout_height="225dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/inner_ring" />
+
+        <ImageView
+            android:id="@+id/midRing"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/mid_ring" />
+
+        <ImageView
+            android:id="@+id/outerRing"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/outer_ring" />
+
+    </RelativeLayout>
 
     <ImageView
-        android:layout_width="210dp"
-        android:layout_height="210dp"
-        android:src="@drawable/mid_ring"
-        android:layout_centerInParent="true"
-        android:id="@+id/midRing"/>
-
-    <ImageView
+        android:id="@+id/successful_vin"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/outer_ring"
         android:layout_centerInParent="true"
-        android:id="@+id/outerRing"/>
+        android:src="@drawable/successful_vin" />
+
 
     <Button
+        android:id="@+id/addVehicle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ADD VEHICLE"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="40dp"
         android:background="@color/white"
-        android:textColor="@color/black"
-        android:id="@+id/addVehicle"/>
+        android:text="ADD VEHICLE"
+        android:textColor="@color/black" />
 
 </RelativeLayout>
