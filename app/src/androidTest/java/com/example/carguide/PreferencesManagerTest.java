@@ -17,6 +17,7 @@ public class PreferencesManagerTest {
     private static String name = "ClientName";
     private static String phone = "12345";
     private static String address = "MyAddress";
+    private static String unit_of_measurement = "Miles";
 
     @Before
     public void prepareSharedPreferences() {
@@ -62,5 +63,13 @@ public class PreferencesManagerTest {
         String result = PreferencesManager.getVehicleNickname();
 
         assertEquals(vehicle_nickname, result);
+    }
+
+    @Test
+    public void saveUnitOfMeasurementInSharedPreferences() {
+        PreferencesManager.saveUnitOfMeasurement(unit_of_measurement);
+        String result = PreferencesManager.getUnitOfMeasurement();
+
+        assertEquals(unit_of_measurement, result);
     }
 }
