@@ -53,7 +53,7 @@ public class PreferencesManager {
 
     public static String getName() { return sharedPreferences.getString(CLIENT_NAME, ""); }
     public static String getAddress() { return sharedPreferences.getString(CLIENT_ADDR, ""); }
-    public static String getPhone() { return sharedPreferences.getString(CLIENT_PHONE, ""); }
+    public static String getPhoneNumber() { return sharedPreferences.getString(CLIENT_PHONE, ""); }
     public static String getVIN() { return sharedPreferences.getString(VIN_NUM, "" ); }
     public static String getVehicleNickname() { return sharedPreferences.getString(VEHICLE_NICKNAME, "" ); }
 

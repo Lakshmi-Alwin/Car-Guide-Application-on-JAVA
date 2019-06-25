@@ -56,7 +56,7 @@ public class EditProfile extends AppCompatActivity {
         else
             name.setText(PreferencesManager.getName());
         address.setText(PreferencesManager.getAddress());
-        phoneNumber.setText(PreferencesManager.getPhone());
+        phoneNumber.setText(PreferencesManager.getPhoneNumber());
     }
 
 }
