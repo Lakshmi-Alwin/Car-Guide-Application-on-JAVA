@@ -25,6 +25,7 @@ public class PreferencesManagerTest {
     public void prepareSharedPreferences() {
         PreferencesManager.sharedAccountID = sharedPreferencesAccountID;
         PreferencesManager.sharedPreferences = context.getSharedPreferences(PreferencesManager.sharedAccountID, MODE_PRIVATE);
+        PreferencesManager.sharedPreferencesEditor = PreferencesManager.sharedPreferences.edit();
     }
 
     @Test
@@ -77,8 +78,8 @@ public class PreferencesManagerTest {
 
     @Test
     public void saveEmptyValueInSharedPreferences() {
-        PreferencesManager.saveEmpty(PreferencesManager.CLIENT_PHONE);
-        String result = PreferencesManager.getPhoneNumber();
+        PreferencesManager.saveEmpty(PreferencesManager.CLIENT_NAME);
+        String result = PreferencesManager.getName();
         assertEquals("", result);
     }
 }

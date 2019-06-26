@@ -44,7 +44,7 @@ class PreferencesManager {
         sharedPreferencesEditor.apply();
     }
   
-    public static void saveEmpty(String string_to_save_in) {
+    static void saveEmpty(String string_to_save_in) {
         sharedPreferencesEditor.putString(string_to_save_in, "");
         sharedPreferencesEditor.apply();
     }
