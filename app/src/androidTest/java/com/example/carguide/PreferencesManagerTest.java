@@ -1,5 +1,7 @@
 package com.example.carguide;
 import android.content.Context;
+import android.content.SharedPreferences;
+
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
@@ -71,5 +73,12 @@ public class PreferencesManagerTest {
         String result = PreferencesManager.getUnitOfMeasurement();
 
         assertEquals(unit_of_measurement, result);
+    }
+
+    @Test
+    public void saveEmptyValueInSharedPreferences() {
+        PreferencesManager.saveEmpty(PreferencesManager.CLIENT_PHONE);
+        String result = PreferencesManager.getPhoneNumber();
+        assertEquals("", result);
     }
 }

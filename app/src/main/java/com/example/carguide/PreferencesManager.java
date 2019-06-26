@@ -50,6 +50,12 @@ public class PreferencesManager {
         sharedPreferencesEditor.apply();
     }
 
+    public static void saveEmpty(String string_to_save_in) {
+        sharedPreferencesEditor = sharedPreferences.edit();
+        sharedPreferencesEditor.putString(string_to_save_in, "");
+        sharedPreferencesEditor.apply();
+    }
+
 
     public static String getName() { return sharedPreferences.getString(CLIENT_NAME, ""); }
     public static String getAddress() { return sharedPreferences.getString(CLIENT_ADDR, ""); }
