@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.app.Activity;
 import android.content.Intent;
@@ -13,7 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -44,10 +43,21 @@ public class MainActivity extends FragmentActivity {
         Log.v(TAG,"before pager");
         setContentView(R.layout.activity_main);
         mPager = findViewById(R.id.pager);
-        PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
-        ((ScreenSlidePagerAdapter) pagerAdapter).addFragment(new mainActFragment1(), "ONE");
-        ((ScreenSlidePagerAdapter) pagerAdapter).addFragment(new mainActFragment2(), "TWO");
-        ((ScreenSlidePagerAdapter) pagerAdapter).addFragment(new mainActFragment3(), "THREE");
+        ScreenSlidePagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+
+
+        mainActFragment mainFragment_1 = new mainActFragment(R.drawable.slider_image1,
+                getResources().getString(R.string.complete_co), getResources().getString(R.string.jedi_like_p));
+        mainActFragment mainFragment_2 = new mainActFragment(R.drawable.slider2,
+                getResources().getString(R.string.guides), getResources().getString(R.string.we_got));
+        mainActFragment mainFragment_3 = new mainActFragment(R.drawable.slider3,
+                getResources().getString(R.string.assistance), getResources().getString(R.string.get_support));
+
+
+
+        pagerAdapter.addFragment(mainFragment_1, "ONE");
+        pagerAdapter.addFragment(mainFragment_2, "TWO");
+        pagerAdapter.addFragment(mainFragment_3, "THREE");
         mPager.setAdapter(pagerAdapter);
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);

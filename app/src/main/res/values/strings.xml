@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">CarGuide</string>
-    <string name="vehicle">VEHICLE</string>
     <string name="complete_co">COMPLETE CONTROL</string>
     <string name="jedi_like_p">Jedi like powers at your finger tips.</string>
     <string name="guides">GUIDES</string>
@@ -37,6 +36,5 @@
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
