@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".AddVehicle">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:background="@color/black"
+                tools:context=".AddVehicle">
 
     <ImageView
         android:id="@+id/vector_left"
@@ -62,21 +63,21 @@
             android:layout_width="225dp"
             android:layout_height="225dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/inner_ring" />
+            app:srcCompat="@drawable/inner_ring" />
 
         <ImageView
             android:id="@+id/midRing"
             android:layout_width="210dp"
             android:layout_height="210dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/mid_ring" />
+            app:srcCompat="@drawable/mid_ring" />
 
         <ImageView
             android:id="@+id/outerRing"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/outer_ring" />
+            app:srcCompat="@drawable/outer_ring" />
 
     </RelativeLayout>
 
@@ -85,7 +86,7 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/successful_vin" />
+        app:srcCompat="@drawable/successful_vin" />
 
 
     <Button
