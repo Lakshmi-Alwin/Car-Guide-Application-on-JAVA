@@ -18,8 +18,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -30,13 +28,14 @@ public class account extends Fragment {
     private GoogleSignInClient googleSignInClient;
     private TextView profileName;
     private CircleImageView profileImage;
+    private boolean isBackFromEditProfile;
 
     @Nullable
     @Override
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_account, container, false);
-
+        isBackFromEditProfile = false;
         Log.v(MainActivity.TAG, "in on create view");
         TextView signout_account = v.findViewById(R.id.signout_account);
         Log.v(MainActivity.TAG, "after signout");
@@ -63,6 +62,7 @@ public class account extends Fragment {
         editProfile.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(),EditProfile.class);
             startActivity(intent);
+            isBackFromEditProfile = true;
         });
 
         RelativeLayout settings = v.findViewById(R.id.settings_account);
@@ -83,5 +83,13 @@ public class account extends Fragment {
         else
             profileName.setText(PreferencesManager.getName());
         Log.v(MainActivity.TAG,"exiting setData");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isBackFromEditProfile)
+            setDataOnView();
+        isBackFromEditProfile = false;
     }
 }
