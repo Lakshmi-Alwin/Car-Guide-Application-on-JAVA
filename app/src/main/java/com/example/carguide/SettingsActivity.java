@@ -1,11 +1,12 @@
 package com.example.carguide;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,10 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private String[] myDataset={"Unit of Measure","Terms & Privacy"};
+    private String[] myDataset={"Unit of Measure","Terms & Privacy", "Remove Vehicle"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +72,31 @@ public class SettingsActivity extends AppCompatActivity {
             holder.textView.setText(this.mDataset[position]);
             final int p = position;
             holder.linearLayout.setOnClickListener(v -> {
-                Intent intent = null;
-                if(p==0)
-                    intent = new Intent(v.getContext(), UnitofMeasureActivity.class);
-                if(p==1)
-                    intent = new Intent(v.getContext(), TermsandPrivacyActivity.class);
-                startActivity(intent);
+                switch (p){
+                    case 0:
+                        startActivity(new Intent(SettingsActivity.this, UnitofMeasureActivity.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(SettingsActivity.this, TermsandPrivacyActivity.class));
+                        break;
+                    case 2:
+                        if(PreferencesManager.getVIN().equals("")) {
+                            Toast.makeText(SettingsActivity.this, "Vehicle does not exist", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+                        builder.setTitle("Remove Vehicle");
+                        builder.setMessage("Do you really want to remove vehicle").setCancelable(false).setPositiveButton("YES", (dialog, which) -> {
+                            finish();
+                            PreferencesManager.deleteVehicleNickname();
+                            PreferencesManager.deleteVIN();
+                        }).setNegativeButton("No", (dialog, which) -> {
+                            dialog.cancel();
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.setTitle("Remove Vehicle");
+                        alert.show();
+                }
             });
 
         }

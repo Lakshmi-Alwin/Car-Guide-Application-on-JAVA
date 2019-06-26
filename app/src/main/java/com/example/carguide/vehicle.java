@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
@@ -35,4 +34,5 @@ public class vehicle extends Fragment {
             profileName.setText(PreferencesManager.getName());
         return v;
     }
+
 }

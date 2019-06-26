@@ -2,59 +2,62 @@ package com.example.carguide;
 
 import android.content.SharedPreferences;
 
-public class PreferencesManager {
-    public static SharedPreferences sharedPreferences;
-    private static SharedPreferences.Editor sharedPreferencesEditor;
-    public static String sharedAccountID;
+class PreferencesManager {
+    static SharedPreferences sharedPreferences;
+    static SharedPreferences.Editor sharedPreferencesEditor;
+    static String sharedAccountID;
 
-    public static String CLIENT_NAME = "clientname";
-    public static String CLIENT_ADDR = "clientaddress";
-    public static String CLIENT_PHONE = "clientphonenumber";
-    public static String UNIT_OF_MEASUREMENT = "unitofmeasurement";
-    public static String VIN_NUM = "vin";
-    public static String VEHICLE_NICKNAME = "nickname";
+    static String CLIENT_NAME = "clientname";
+    private static String CLIENT_ADDR = "clientaddress";
+    private static String CLIENT_PHONE = "clientphonenumber";
+    private static String UNIT_OF_MEASUREMENT = "unitofmeasurement";
+    private static String VIN_NUM = "vin";
+    private static String VEHICLE_NICKNAME = "nickname";
 
-    public static void saveName(String name) {
-        sharedPreferencesEditor = sharedPreferences.edit();
+    static void saveName(String name) {
         sharedPreferencesEditor.putString(CLIENT_NAME,name);
         sharedPreferencesEditor.apply();
     }
 
-    public static void savePhoneNumber(String phoneNumber) {
-        sharedPreferencesEditor = sharedPreferences.edit();
+    static void savePhoneNumber(String phoneNumber) {
         sharedPreferencesEditor.putString(CLIENT_PHONE, phoneNumber);
         sharedPreferencesEditor.apply();
     }
 
-    public static void saveAddress(String address) {
-        sharedPreferencesEditor = sharedPreferences.edit();
+    static void saveAddress(String address) {
         sharedPreferencesEditor.putString(CLIENT_ADDR, address);
         sharedPreferencesEditor.apply();
     }
 
-    public static void saveVIN(String vin) {
-        sharedPreferencesEditor = sharedPreferences.edit();
+    static void saveVIN(String vin) {
         sharedPreferencesEditor.putString(VIN_NUM, vin);
         sharedPreferencesEditor.apply();
     }
 
-    public static void saveVehicleNickName(String nickname) {
-        sharedPreferencesEditor = sharedPreferences.edit();
+    static void saveVehicleNickName(String nickname) {
         sharedPreferencesEditor.putString(VEHICLE_NICKNAME, nickname);
         sharedPreferencesEditor.apply();
     }
 
-    public static void saveUnitOfMeasurement(String unitOfMeasurement) {
-        sharedPreferencesEditor = sharedPreferences.edit();
+    static void saveUnitOfMeasurement(String unitOfMeasurement) {
         sharedPreferencesEditor.putString(UNIT_OF_MEASUREMENT, unitOfMeasurement);
         sharedPreferencesEditor.apply();
     }
 
+    static String getName() { return sharedPreferences.getString(CLIENT_NAME, ""); }
+    static String getAddress() { return sharedPreferences.getString(CLIENT_ADDR, ""); }
+    static String getPhoneNumber() { return sharedPreferences.getString(CLIENT_PHONE, ""); }
+    static String getVIN() { return sharedPreferences.getString(VIN_NUM, "" ); }
+    static String getVehicleNickname() { return sharedPreferences.getString(VEHICLE_NICKNAME, "" ); }
+    static String getUnitOfMeasurement() { return sharedPreferences.getString(UNIT_OF_MEASUREMENT, ""); }
 
-    public static String getName() { return sharedPreferences.getString(CLIENT_NAME, ""); }
-    public static String getAddress() { return sharedPreferences.getString(CLIENT_ADDR, ""); }
-    public static String getPhoneNumber() { return sharedPreferences.getString(CLIENT_PHONE, ""); }
-    public static String getVIN() { return sharedPreferences.getString(VIN_NUM, "" ); }
-    public static String getVehicleNickname() { return sharedPreferences.getString(VEHICLE_NICKNAME, "" ); }
-    public static String getUnitOfMeasurement() { return sharedPreferences.getString(UNIT_OF_MEASUREMENT, ""); }
+    static void deleteVIN(){
+        sharedPreferencesEditor.remove(VIN_NUM);
+        sharedPreferencesEditor.apply();
+    }
+
+    static void deleteVehicleNickname(){
+        sharedPreferencesEditor.remove(VEHICLE_NICKNAME);
+        sharedPreferencesEditor.apply();
+    }
 }

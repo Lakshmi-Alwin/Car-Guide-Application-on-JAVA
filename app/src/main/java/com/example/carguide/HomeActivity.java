@@ -2,14 +2,10 @@ package com.example.carguide;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -23,9 +19,10 @@ public class HomeActivity extends AppCompatActivity {
 
         PreferencesManager.sharedAccountID = GoogleSignIn.getLastSignedInAccount(this).getId();
         PreferencesManager.sharedPreferences = getSharedPreferences(PreferencesManager.sharedAccountID, MODE_PRIVATE);
+        PreferencesManager.sharedPreferencesEditor = PreferencesManager.sharedPreferences.edit();
 
-        final String vin = PreferencesManager.getVIN();
-        if(vin.length() == 0)
+        final String[] vin = {PreferencesManager.getVIN()};
+        if(vin[0].equals(""))
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new vehicle()).commit();
         else getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VehiclePage()).commit();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -41,7 +38,8 @@ public class HomeActivity extends AppCompatActivity {
                     vehicle_tab_underline.setVisibility(View.VISIBLE);
                     support_tab_underline.setVisibility(View.GONE);
                     account_tab_underline.setVisibility(View.GONE);
-                    selectedFragment = vin.length() == 0 ? new vehicle(): new VehiclePage();
+                    vin[0] = PreferencesManager.getVIN();
+                    selectedFragment = vin[0].equals("") ? new vehicle(): new VehiclePage();
                     break;
                 case R.id.help:
                     vehicle_tab_underline.setVisibility(View.GONE);
@@ -59,7 +57,6 @@ public class HomeActivity extends AppCompatActivity {
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment, "profile_fragment_tag").commit();
             return true;
-
         });
     }
 }
