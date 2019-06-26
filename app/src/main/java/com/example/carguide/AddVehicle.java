@@ -32,13 +32,13 @@ public class AddVehicle extends AppCompatActivity {
         vectorLeft = findViewById(R.id.vector_left);
         addVehicle = findViewById(R.id.addVehicle);
         vin = findViewById(R.id.vin);
-        nickName  = findViewById(R.id.vehicle_nickname);
+        nickName = findViewById(R.id.vehicle_nickname);
         outerRing = findViewById(R.id.outerRing);
         midRing = findViewById(R.id.midRing);
         innerRing = findViewById(R.id.innerRing);
         result = findViewById(R.id.vehicle_result);
         successfulVin = findViewById(R.id.successful_vin);
-        loading_layLayout=findViewById(R.id.loading_layout);
+        loading_layLayout = findViewById(R.id.loading_layout);
 
         successfulVin.setVisibility(View.GONE);
 
@@ -65,13 +65,11 @@ public class AddVehicle extends AppCompatActivity {
         vectorLeft.setOnClickListener(v -> onBackPressed());
         addVehicle.setOnClickListener(v -> {
             final String editTextVin = vin.getText().toString();
-            if(editTextVin.length() != 17)
-            {
+            if (editTextVin.length() != 17) {
                 vin.setError("VIN should have 17 characters");
                 return;
             }
-            if(!isAlphaNumericUpperCase(editTextVin))
-            {
+            if (!isAlphaNumericUpperCase(editTextVin)) {
                 vin.setError("VIN should only contain uppercase letters and numbers");
                 return;
             }
@@ -82,32 +80,20 @@ public class AddVehicle extends AppCompatActivity {
 
             PreferencesManager.saveVIN(vin.getText().toString());
             PreferencesManager.saveVehicleNickName(nickName.getText().toString());
+
                 loading_layLayout.setVisibility(View.VISIBLE);
-                loading_layLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        loading_layLayout.setVisibility(View.GONE);
-                    }
-                },3000);
+                loading_layLayout.postDelayed(() -> loading_layLayout.setVisibility(View.GONE),3000);
 
-                successfulVin.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        successfulVin.setRotation(outerRing.getRotation());
-                        successfulVin.setVisibility(View.VISIBLE);
-                    }
-                },3000);
+                successfulVin.postDelayed(() -> successfulVin.setVisibility(View.VISIBLE),3000);
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        PreferencesManager.saveVIN(editTextVin);
-                        Intent intent = new Intent(AddVehicle.this, HomeActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                    }
+                new Handler().postDelayed(() -> {
+                    PreferencesManager.saveVIN(editTextVin);
+                    Intent intent = new Intent(AddVehicle.this, HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+
                 }, 6000);
-        });
+                });
     }
 
     private boolean isAlphaNumericUpperCase(String s) {

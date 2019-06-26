@@ -34,7 +34,7 @@ public class EditProfile extends AppCompatActivity {
         setData();
 
         saveButton.setOnClickListener(v -> {
-            if(name.getText().toString().isEmpty() || address.getText().toString().isEmpty() || phoneNumber.getText().toString().isEmpty()) {
+            if(name.getText().toString().isEmpty() && address.getText().toString().isEmpty() && phoneNumber.getText().toString().isEmpty()) {
                 onBackPressed();
                 return;
         }
