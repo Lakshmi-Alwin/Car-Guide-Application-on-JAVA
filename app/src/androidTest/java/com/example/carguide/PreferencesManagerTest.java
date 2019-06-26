@@ -1,6 +1,5 @@
 package com.example.carguide;
 import android.content.Context;
-import android.content.SharedPreferences;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
