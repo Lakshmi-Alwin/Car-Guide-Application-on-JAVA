@@ -1,14 +1,10 @@
 package com.example.carguide;
 
 
-import android.content.Context;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import androidx.fragment.app.Fragment;
-import androidx.test.platform.app.InstrumentationRegistry;
 
 public class MainActivityFragmentsTest {
     private mainActFragment currentFragment;
