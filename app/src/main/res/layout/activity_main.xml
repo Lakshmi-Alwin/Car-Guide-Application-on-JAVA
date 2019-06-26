@@ -65,8 +65,7 @@
                 android:layout_marginTop="80dp"
                 android:layout_centerInParent="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:background="@color/colorPrimaryDark"/>
+                app:layout_constraintStart_toStartOf="parent"/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
