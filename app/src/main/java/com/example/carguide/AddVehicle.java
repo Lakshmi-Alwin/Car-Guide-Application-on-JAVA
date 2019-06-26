@@ -80,31 +80,20 @@ public class AddVehicle extends AppCompatActivity {
 
             PreferencesManager.saveVIN(vin.getText().toString());
             PreferencesManager.saveVehicleNickName(nickName.getText().toString());
-            loading_layLayout.setVisibility(View.VISIBLE);
-            loading_layLayout.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    loading_layLayout.setVisibility(View.GONE);
-                }
-            }, 3000);
 
-            successfulVin.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    successfulVin.setVisibility(View.VISIBLE);
-                }
-            }, 3000);
+                loading_layLayout.setVisibility(View.VISIBLE);
+                loading_layLayout.postDelayed(() -> loading_layLayout.setVisibility(View.GONE),3000);
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
+                successfulVin.postDelayed(() -> successfulVin.setVisibility(View.VISIBLE),3000);
+
+                new Handler().postDelayed(() -> {
                     PreferencesManager.saveVIN(editTextVin);
                     Intent intent = new Intent(AddVehicle.this, HomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-                }
-            }, 6000);
-        });
+
+                }, 6000);
+                });
     }
 
     private boolean isAlphaNumericUpperCase(String s) {

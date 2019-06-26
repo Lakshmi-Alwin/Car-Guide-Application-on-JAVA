@@ -34,36 +34,31 @@ public class HomeActivity extends AppCompatActivity {
         final ImageView account_tab_underline = findViewById(R.id.account_tab_underline);
         support_tab_underline.setVisibility(View.GONE);
         account_tab_underline.setVisibility(View.GONE);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-                switch (item.getItemId()) {
-                    case R.id.car:
-                        vehicle_tab_underline.setVisibility(View.VISIBLE);
-                        support_tab_underline.setVisibility(View.GONE);
-                        account_tab_underline.setVisibility(View.GONE);
-                        selectedFragment = vin.length() == 0 ? new vehicle(): new VehiclePage();
-                        break;
-                    case R.id.help:
-                        vehicle_tab_underline.setVisibility(View.GONE);
-                        support_tab_underline.setVisibility(View.VISIBLE);
-                        account_tab_underline.setVisibility(View.GONE);
-                        selectedFragment = new support();
-                        break;
-                    case R.id.account:
-                        vehicle_tab_underline.setVisibility(View.GONE);
-                        support_tab_underline.setVisibility(View.GONE);
-                        account_tab_underline.setVisibility(View.VISIBLE);
-                        selectedFragment = new account();
-                        Log.v(MainActivity.TAG, "account fragment");
-                        break;
-                }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment, "profile_fragment_tag").commit();
-                return true;
-
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            Fragment selectedFragment = null;
+            switch (item.getItemId()) {
+                case R.id.car:
+                    vehicle_tab_underline.setVisibility(View.VISIBLE);
+                    support_tab_underline.setVisibility(View.GONE);
+                    account_tab_underline.setVisibility(View.GONE);
+                    selectedFragment = vin.length() == 0 ? new vehicle(): new VehiclePage();
+                    break;
+                case R.id.help:
+                    vehicle_tab_underline.setVisibility(View.GONE);
+                    support_tab_underline.setVisibility(View.VISIBLE);
+                    account_tab_underline.setVisibility(View.GONE);
+                    selectedFragment = new support();
+                    break;
+                case R.id.account:
+                    vehicle_tab_underline.setVisibility(View.GONE);
+                    support_tab_underline.setVisibility(View.GONE);
+                    account_tab_underline.setVisibility(View.VISIBLE);
+                    selectedFragment = new account();
+                    Log.v(MainActivity.TAG, "account fragment");
+                    break;
             }
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment, "profile_fragment_tag").commit();
+            return true;
 
         });
     }
