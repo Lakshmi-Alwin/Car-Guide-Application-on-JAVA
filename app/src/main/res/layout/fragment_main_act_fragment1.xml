@@ -13,7 +13,7 @@
     <RelativeLayout android:layout_height="match_parent"
         android:layout_width="match_parent">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/slider1"
             android:layout_width="270dp"
             android:layout_height="270dp"

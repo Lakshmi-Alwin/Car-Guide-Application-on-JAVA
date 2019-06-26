@@ -112,7 +112,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/vector_down"
+            app:srcCompat="@drawable/vector_down"
             android:layout_below="@+id/vehicle_details"
             android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"/>
