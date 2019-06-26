@@ -43,7 +43,12 @@ class PreferencesManager {
         sharedPreferencesEditor.putString(UNIT_OF_MEASUREMENT, unitOfMeasurement);
         sharedPreferencesEditor.apply();
     }
-
+  
+    public static void saveEmpty(String string_to_save_in) {
+        sharedPreferencesEditor.putString(string_to_save_in, "");
+        sharedPreferencesEditor.apply();
+    }
+  
     static String getName() { return sharedPreferences.getString(CLIENT_NAME, ""); }
     static String getAddress() { return sharedPreferences.getString(CLIENT_ADDR, ""); }
     static String getPhoneNumber() { return sharedPreferences.getString(CLIENT_PHONE, ""); }

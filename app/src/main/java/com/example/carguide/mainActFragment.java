@@ -42,5 +42,9 @@ public class mainActFragment extends Fragment {
         return rootView;
     }
 
+    public int getImageID() { return imageText; }
+    public String getTitleText() { return titleText; }
+    public String getExtraText() { return extraText; }
+
 
 }
