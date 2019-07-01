@@ -1,91 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".VehiclePage">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black">
-    <ImageView
-        android:id="@+id/triangle_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        app:srcCompat="@drawable/triangle"
-        android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/triangle_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/triangle" />
 
         <ImageView
             android:id="@+id/maincar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_maincar"
             android:layout_below="@+id/triangle_up"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:background="@color/black" />
+            android:background="@color/black"
+            app:srcCompat="@drawable/ic_maincar" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_below="@+id/maincar"
-            android:layout_marginTop="110dp"
-            android:weightSum="3">
+            android:layout_marginTop="110dp">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
                     <ImageView
-                        android:id="@+id/locked"
+                        android:id="@+id/locked_not_selected"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/locked_notselected"
+                        android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_alignParentBottom="true"/>
-                </RelativeLayout>
-            </LinearLayout>
+                        app:srcCompat="@drawable/locked_not_selected" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/start_engine"
+                        android:id="@+id/locked_selected"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/start_engine"
-                        android:layout_centerHorizontal="true" />
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:layout_weight="1">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp">
-                    <ImageView
-                        android:id="@+id/unlocked"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/unlocked_notselected"
+                        android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_alignParentBottom="true"/>
+                        app:srcCompat="@drawable/lock_selected" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/start_engine_not_selected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/start_engine_not_active" />
+
+                    <ImageView
+                        android:id="@+id/start_engine_selected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/start_engine_selected" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/unlocked_not_selected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/unlocked_not_selected" />
+
+                    <ImageView
+                        android:id="@+id/unlocked_selected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/unlocked_selected" />
+
                 </RelativeLayout>
             </LinearLayout>
-        </LinearLayout>
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/myfiesta"
@@ -103,18 +126,19 @@
             android:id="@+id/vehicle_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="VEHICLE DETAILS"
-            android:textSize="15dp"
             android:layout_below="@+id/myfiesta"
-            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"/>
+            android:text="VEHICLE DETAILS"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/vector_down"
             android:layout_below="@+id/vehicle_details"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"/>
+            app:srcCompat="@drawable/vector_down" />
     </RelativeLayout>
 </FrameLayout>
