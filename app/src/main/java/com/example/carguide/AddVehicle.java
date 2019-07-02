@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import java.util.regex.Pattern;
 
 public class AddVehicle extends AppCompatActivity {
@@ -24,6 +27,7 @@ public class AddVehicle extends AppCompatActivity {
     TextView result;
     RelativeLayout loading_layLayout;
     private static Pattern ALPHANUMERICUPPERCASE = Pattern.compile("^[A-Z0-9]*$");
+    private String url ="http://car-guide.herokuapp.com/addvehicle";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,8 @@ public class AddVehicle extends AppCompatActivity {
         result = findViewById(R.id.vehicle_result);
         successfulVin = findViewById(R.id.successful_vin);
         loading_layLayout = findViewById(R.id.loading_layout);
+
+        RequestQueue queue = Volley.newRequestQueue(this);
 
         successfulVin.setVisibility(View.GONE);
 
