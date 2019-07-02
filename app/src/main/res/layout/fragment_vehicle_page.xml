@@ -29,6 +29,52 @@
             android:background="@color/black"
             app:srcCompat="@drawable/ic_maincar" />
 
+        <ImageView
+            android:id="@+id/outer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/maincar"
+            android:layout_alignRight="@+id/maincar"
+            android:layout_marginRight="-100dp"
+            android:layout_marginTop="110dp"
+            app:srcCompat="@drawable/outer_rectangle" />
+
+        <ImageView
+            android:id="@+id/scale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/outer"
+            android:layout_alignLeft="@+id/outer"
+            app:srcCompat="@drawable/scale" />
+
+        <ImageView
+            android:id="@+id/fuel_level"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            app:srcCompat="@drawable/inner_reading"
+            android:layout_alignRight="@+id/outer"
+            android:layout_alignBottom="@+id/outer"/>
+
+        <TextView
+            android:id="@+id/e"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/outer"
+            android:text="E"
+            android:textColor="@color/white"
+            android:layout_marginLeft="315dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/outer"
+            android:text="F"
+            android:textColor="@color/white"
+            android:layout_marginLeft="315dp"
+            android:textStyle="bold"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
