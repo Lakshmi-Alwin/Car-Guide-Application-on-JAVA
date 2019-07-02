@@ -77,6 +77,95 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/maincar"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/line_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/line"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="70dp"
+                    android:id="@+id/dte">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="DTE\n206 MILES"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"/>
+                </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="70dp"
+                    android:id="@+id/odd">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="ODD\n206609 MILES"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="70dp"
+                    android:id="@+id/oil_life">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:textAlignment="center"
+                            android:text="OIL LIFE\n93%"
+                            android:textColor="@color/white"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/line"
+                android:layout_below="@+id/line_one"
+                android:layout_marginTop="70dp"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_below="@+id/maincar"
             android:layout_marginTop="110dp">
