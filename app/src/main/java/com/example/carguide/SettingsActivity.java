@@ -30,7 +30,6 @@ import org.json.JSONObject;
 public class SettingsActivity extends AppCompatActivity {
 
     private String[] myDataset={"Unit of Measure","Terms & Privacy", "Remove Vehicle"};
-    private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +41,6 @@ public class SettingsActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        Cache cache = new DiskBasedCache(getCacheDir());
-        Network network = new BasicNetwork(new HurlStack());
-        requestQueue = new RequestQueue(cache, network);
-        requestQueue.start();
 
         Log.v(MainActivity.TAG,"before settings adapter");
         RecyclerView.Adapter mAdapter = new SettingsListAdapter(myDataset);
@@ -57,7 +52,6 @@ public class SettingsActivity extends AppCompatActivity {
         private String[] mDataset;
 
         class MyViewHolder extends RecyclerView.ViewHolder {
-            // each data item is just a string in this case
             TextView textView;
             LinearLayout linearLayout;
             Context context;
@@ -118,7 +112,7 @@ public class SettingsActivity extends AppCompatActivity {
                                 Toast.makeText(SettingsActivity.this, "Vehicle is not removed", Toast.LENGTH_LONG).show();
                                 finish();
                             });
-                            requestQueue.add(jsonObjectRequest);
+                            ApiSingleton.getInstance(SettingsActivity.this).addToRequestQueue(jsonObjectRequest);
                         }).setNegativeButton("No", (dialog, which) -> dialog.cancel());
                         AlertDialog alert = builder.create();
                         alert.setTitle("Remove Vehicle");

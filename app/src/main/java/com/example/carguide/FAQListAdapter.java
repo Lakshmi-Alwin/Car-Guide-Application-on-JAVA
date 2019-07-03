@@ -7,10 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import static com.example.carguide.support.QUESTIONSNO;
 
 public class FAQListAdapter extends RecyclerView.Adapter<FAQListAdapter.ViewHolder> {
@@ -51,7 +49,7 @@ public class FAQListAdapter extends RecyclerView.Adapter<FAQListAdapter.ViewHold
         return faqList.length;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder{
         TextView faqTextView;
         LinearLayout linearLayout;
         ViewHolder(@NonNull View itemView) {

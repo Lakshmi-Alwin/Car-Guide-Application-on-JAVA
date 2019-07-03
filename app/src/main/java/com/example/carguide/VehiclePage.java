@@ -10,12 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+import com.android.volley.Request;
+import com.android.volley.toolbox.JsonObjectRequest;
+
 import static android.view.View.GONE;
 
 public class VehiclePage extends Fragment {
 
     private ImageView lockedSelected, unlockedSelected,fuel_level, lockedNotSelected, unlockedNotSelected, startEngineSelected, startEngineNotSelected;
+    private LinearLayout vehicle_details;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @SuppressLint("ClickableViewAccessibility")
@@ -30,11 +35,29 @@ public class VehiclePage extends Fragment {
         startEngineNotSelected = view.findViewById(R.id.start_engine_not_selected);
         startEngineSelected = view.findViewById(R.id.start_engine_selected);
         fuel_level=view.findViewById(R.id.fuel_level);
+        vehicle_details = view.findViewById(R.id.vehicle_odometer_details);
+        vehicle_details.setVisibility(GONE);
+        lockedSelected.setVisibility(GONE);
         unlockedSelected.setVisibility(GONE);
-        unlockedNotSelected.setVisibility(View.VISIBLE);
-        lockedNotSelected.setVisibility(GONE);
-        lockedSelected.setVisibility(View.VISIBLE);
         startEngineSelected.setVisibility(GONE);
+        String url = "https://car-guide.herokuapp.com/getvehicle?username="+PreferencesManager.getEmail();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
+            vehicle_details.setVisibility(View.VISIBLE);
+            lockedSelected.setVisibility(View.VISIBLE);
+            unlockedNotSelected.setVisibility(View.VISIBLE);
+            lockedNotSelected.setVisibility(GONE);
+            unlockedSelected.setVisibility(GONE);
+        }, error -> {
+
+            vehicle_details.setVisibility(GONE);
+            lockedSelected.setVisibility(GONE);
+            startEngineNotSelected.setVisibility(GONE);
+            unlockedNotSelected.setVisibility(GONE);
+            startEngineSelected.setVisibility(GONE);
+            lockedNotSelected.setVisibility(View.VISIBLE);
+            unlockedSelected.setVisibility(View.VISIBLE);
+        });
 
         lockedSelected.setOnClickListener(view1 -> {
             lockedSelected.setVisibility(GONE);
@@ -54,8 +77,9 @@ public class VehiclePage extends Fragment {
             startEngineSelected.setVisibility(GONE);
         });
 
-        startEngineSelected.setOnClickListener(view2 -> Toast.makeText(view.getContext() , "Engine is starting", Toast.LENGTH_SHORT).show());
+        ApiSingleton.getInstance(view.getContext()).addToRequestQueue(jsonObjectRequest);
 
+        startEngineSelected.setOnClickListener(view2 -> Toast.makeText(view.getContext() , "Engine is starting", Toast.LENGTH_SHORT).show());
         startEngineNotSelected.setOnClickListener(view2 -> Toast.makeText(view.getContext() , "Please Lock the vehicle", Toast.LENGTH_SHORT).show());
 
         return view;
