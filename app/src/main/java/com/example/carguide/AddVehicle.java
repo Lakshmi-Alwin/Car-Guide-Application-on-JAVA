@@ -59,7 +59,7 @@ public class AddVehicle extends AppCompatActivity {
         loading_layLayout = findViewById(R.id.loading_layout);
 
         GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(this);
-        
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.POST, url+"?username="+googleSignInAccount.getEmail()+"&vin="+vin.getText().toString()+"&nickname="+nickName.getText().toString(), null, new Response.Listener<JSONObject>() {
 
