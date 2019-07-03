@@ -62,7 +62,8 @@
             android:layout_alignBottom="@+id/outer"
             android:text="E"
             android:textColor="@color/white"
-            android:layout_marginLeft="315dp"
+            android:layout_toLeftOf="@+id/outer"
+            android:layout_marginRight="10dp"
             android:textStyle="bold"/>
 
         <TextView
@@ -71,8 +72,10 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/outer"
             android:text="F"
+            android:layout_toLeftOf="@+id/outer"
+            android:layout_marginRight="10dp"
             android:textColor="@color/white"
-            android:layout_marginLeft="315dp"
+
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/tyre_lt"

@@ -48,6 +48,7 @@ public class VehiclePage extends Fragment {
             unlockedNotSelected.setVisibility(View.VISIBLE);
             lockedNotSelected.setVisibility(GONE);
             unlockedSelected.setVisibility(GONE);
+
         }, error -> {
 
             vehicle_details.setVisibility(GONE);
