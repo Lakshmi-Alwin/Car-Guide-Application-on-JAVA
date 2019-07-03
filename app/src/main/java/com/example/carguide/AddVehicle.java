@@ -2,6 +2,7 @@ package com.example.carguide;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,11 +14,24 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+
+import org.json.JSONObject;
 
 import java.util.regex.Pattern;
+
+import static android.icu.text.DisplayContext.LENGTH_SHORT;
 
 public class AddVehicle extends AppCompatActivity {
 
@@ -44,7 +58,29 @@ public class AddVehicle extends AppCompatActivity {
         successfulVin = findViewById(R.id.successful_vin);
         loading_layLayout = findViewById(R.id.loading_layout);
 
-        RequestQueue queue = Volley.newRequestQueue(this);
+        GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, url+"?username="+googleSignInAccount.getEmail()+"&vin="+vin.getText().toString()+"&nickname="+nickName.getText().toString(), null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                          Toast.makeText(AddVehicle.this,"Vehicle added succesfully",Toast.LENGTH_SHORT).show();
+                        //textView.setText("Response: " + response.toString());
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+
+                    }
+                });
+
+// Access the RequestQueue through your singleton class.
+      ApiSingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+
+
 
         successfulVin.setVisibility(View.GONE);
 
