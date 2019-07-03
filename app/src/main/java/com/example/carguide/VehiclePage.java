@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
-
 import static android.view.View.GONE;
 
 public class VehiclePage extends Fragment {
@@ -45,11 +44,11 @@ public class VehiclePage extends Fragment {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
             vehicle_details.setVisibility(View.VISIBLE);
             lockedSelected.setVisibility(View.VISIBLE);
+            startEngineNotSelected.setVisibility(View.VISIBLE);
             unlockedNotSelected.setVisibility(View.VISIBLE);
             lockedNotSelected.setVisibility(GONE);
             unlockedSelected.setVisibility(GONE);
         }, error -> {
-
             vehicle_details.setVisibility(GONE);
             lockedSelected.setVisibility(GONE);
             startEngineNotSelected.setVisibility(GONE);

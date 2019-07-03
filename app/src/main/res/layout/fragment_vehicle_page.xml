@@ -323,29 +323,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/maincar"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="212dp"
+            android:layout_marginTop="210dp"
             android:text="MY FIESTA"
             android:textAppearance="@style/complete_co"
             android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textSize="25dp" />
 
-        <TextView
-            android:id="@+id/vehicle_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/myfiesta"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text="VEHICLE DETAILS"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/vehicle_details"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/vector_down" />
     </RelativeLayout>
 </FrameLayout>
