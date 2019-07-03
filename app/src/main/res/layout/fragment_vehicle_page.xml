@@ -88,7 +88,7 @@
             android:id="@+id/lt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/tyre"
+            app:srcCompat="@drawable/tyre_green"
             android:layout_toRightOf="@+id/tyre_lt"
             android:layout_marginTop="115dp"/>
 
@@ -106,7 +106,7 @@
             android:id="@+id/rt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/tyre"
+            app:srcCompat="@drawable/tyre_green"
             android:layout_toLeftOf="@+id/tyre_rt"
             android:layout_marginTop="115dp" />
 
@@ -124,10 +124,9 @@
             android:id="@+id/lb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/tyre"
+            app:srcCompat="@drawable/tyre_red"
             android:layout_toRightOf="@+id/tyre_lb"
-            android:layout_marginTop="250dp"
-            android:foreground="@color/red" />
+            android:layout_marginTop="250dp" />
         <TextView
             android:id="@+id/tyre_rb"
             android:layout_width="wrap_content"
@@ -142,10 +141,9 @@
             android:id="@+id/rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/tyre"
+            app:srcCompat="@drawable/tyre_orange"
             android:layout_toLeftOf="@+id/tyre_rb"
-            android:layout_marginTop="250dp"
-            android:foreground="@color/orange" />
+            android:layout_marginTop="250dp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
