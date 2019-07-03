@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,10 +15,22 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.android.volley.Cache;
+import com.android.volley.Network;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HurlStack;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SettingsActivity extends AppCompatActivity {
 
     private String[] myDataset={"Unit of Measure","Terms & Privacy", "Remove Vehicle"};
+    private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +42,10 @@ public class SettingsActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        Cache cache = new DiskBasedCache(getCacheDir());
+        Network network = new BasicNetwork(new HurlStack());
+        requestQueue = new RequestQueue(cache, network);
+        requestQueue.start();
 
         Log.v(MainActivity.TAG,"before settings adapter");
         RecyclerView.Adapter mAdapter = new SettingsListAdapter(myDataset);
@@ -87,18 +102,29 @@ public class SettingsActivity extends AppCompatActivity {
                         AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
                         builder.setTitle("Remove Vehicle");
                         builder.setMessage("Do you really want to remove vehicle").setCancelable(false).setPositiveButton("YES", (dialog, which) -> {
-                            finish();
-                            PreferencesManager.deleteVehicleNickname();
-                            PreferencesManager.deleteVIN();
-                        }).setNegativeButton("No", (dialog, which) -> {
-                            dialog.cancel();
-                        });
+                            String url = "https://car-guide.herokuapp.com/removevehicle";
+                            JSONObject jsonObject = new JSONObject();
+                            try {
+                                jsonObject.put("username", PreferencesManager.getEmail());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,jsonObject,response -> {
+                                Toast.makeText(SettingsActivity.this, "Vehicle is removed", Toast.LENGTH_LONG).show();
+                                finish();
+                                PreferencesManager.deleteVehicleNickname();
+                                PreferencesManager.deleteVIN();
+                            }, error -> {
+                                Toast.makeText(SettingsActivity.this, "Vehicle is not removed", Toast.LENGTH_LONG).show();
+                                finish();
+                            });
+                            requestQueue.add(jsonObjectRequest);
+                        }).setNegativeButton("No", (dialog, which) -> dialog.cancel());
                         AlertDialog alert = builder.create();
                         alert.setTitle("Remove Vehicle");
                         alert.show();
                 }
             });
-
         }
 
         @Override

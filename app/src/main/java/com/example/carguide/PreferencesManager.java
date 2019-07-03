@@ -13,6 +13,12 @@ class PreferencesManager {
     private static String UNIT_OF_MEASUREMENT = "unitofmeasurement";
     private static String VIN_NUM = "vin";
     private static String VEHICLE_NICKNAME = "nickname";
+    private static String CLIENT_EMAIL = "clientemail";
+
+    static void saveEmail(String email) {
+        sharedPreferencesEditor.putString(CLIENT_EMAIL, email);
+        sharedPreferencesEditor.apply();
+    }
 
     static void saveName(String name) {
         sharedPreferencesEditor.putString(CLIENT_NAME,name);
@@ -48,7 +54,8 @@ class PreferencesManager {
         sharedPreferencesEditor.putString(string_to_save_in, "");
         sharedPreferencesEditor.apply();
     }
-  
+
+    static String getEmail() { return sharedPreferences.getString(CLIENT_EMAIL, ""); }
     static String getName() { return sharedPreferences.getString(CLIENT_NAME, ""); }
     static String getAddress() { return sharedPreferences.getString(CLIENT_ADDR, ""); }
     static String getPhoneNumber() { return sharedPreferences.getString(CLIENT_PHONE, ""); }

@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Objects;
+
 public class HomeActivity extends AppCompatActivity {
 
 
@@ -20,6 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         PreferencesManager.sharedAccountID = GoogleSignIn.getLastSignedInAccount(this).getId();
         PreferencesManager.sharedPreferences = getSharedPreferences(PreferencesManager.sharedAccountID, MODE_PRIVATE);
         PreferencesManager.sharedPreferencesEditor = PreferencesManager.sharedPreferences.edit();
+        PreferencesManager.saveEmail(Objects.requireNonNull(GoogleSignIn.getLastSignedInAccount(this)).getEmail());
 
         final String[] vin = {PreferencesManager.getVIN()};
         if(vin[0].equals(""))

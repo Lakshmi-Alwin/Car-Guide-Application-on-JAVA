@@ -1,7 +1,6 @@
 package com.example.carguide;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,7 +8,6 @@ import android.widget.TextView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.squareup.picasso.Picasso;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfile extends AppCompatActivity {
@@ -49,7 +47,7 @@ public class EditProfile extends AppCompatActivity {
 
     private void setData() {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        email.setText(account.getEmail());
+        email.setText(PreferencesManager.getEmail());
         Picasso.get().load(account.getPhotoUrl()).centerInside().fit().into(profilePic);
         if(PreferencesManager.getName().equals(""))
             name.setText(account.getDisplayName());
