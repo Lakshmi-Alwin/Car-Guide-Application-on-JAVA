@@ -74,7 +74,78 @@
             android:textColor="@color/white"
             android:layout_marginLeft="315dp"
             android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tyre_lt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="33"
+            android:textColor="@color/white"
+            android:layout_toLeftOf="@+id/maincar"
+            android:layout_marginTop="115dp"
+            android:layout_marginRight="10dp"/>
 
+        <ImageView
+            android:id="@+id/lt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/tyre"
+            android:layout_toRightOf="@+id/tyre_lt"
+            android:layout_marginTop="115dp"/>
+
+        <TextView
+            android:id="@+id/tyre_rt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="22"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/maincar"
+            android:layout_marginTop="115dp"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:id="@+id/rt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/tyre"
+            android:layout_toLeftOf="@+id/tyre_rt"
+            android:layout_marginTop="115dp" />
+
+        <TextView
+            android:id="@+id/tyre_lb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="06"
+            android:textColor="@color/white"
+            android:layout_toLeftOf="@+id/maincar"
+            android:layout_marginTop="250dp"
+            android:layout_marginRight="10dp"/>
+
+        <ImageView
+            android:id="@+id/lb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/tyre"
+            android:layout_toRightOf="@+id/tyre_lb"
+            android:layout_marginTop="250dp"
+            android:foreground="@color/red" />
+        <TextView
+            android:id="@+id/tyre_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/maincar"
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:id="@+id/rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/tyre"
+            android:layout_toLeftOf="@+id/tyre_rb"
+            android:layout_marginTop="250dp"
+            android:foreground="@color/orange" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,7 +198,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
-                            android:text="ODD\n206609 MILES"
+                            android:text="ODO\n206609 MILES"
                             android:textAlignment="center"
                             android:textColor="@color/white"/>
                     </RelativeLayout>

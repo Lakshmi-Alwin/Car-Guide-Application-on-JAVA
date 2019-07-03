@@ -42,6 +42,7 @@ public class AddVehicle extends AppCompatActivity {
         successfulVin = findViewById(R.id.successful_vin);
         loading_layLayout = findViewById(R.id.loading_layout);
 
+
         Animation outerAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         outerAnimation.setDuration(2000);
         outerAnimation.setRepeatCount(-1);
