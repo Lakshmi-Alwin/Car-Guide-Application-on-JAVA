@@ -110,6 +110,7 @@ public class VehiclePage extends Fragment {
                     dte.setText("DTE\n"+vehicle.getInt("dte")+" KM");
                 }
                 fuel_level.getLayoutParams().height = outerGuage.getHeight()*vehicle.getInt("fuel_level")/100;
+                fuel_level.setScaleType(ImageView.ScaleType.FIT_XY);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
