@@ -15,15 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import static android.view.View.GONE;
 
 public class VehiclePage extends Fragment {
 
-    private ImageView lockedSelected, unlockedSelected,fuel_level, lockedNotSelected, unlockedNotSelected, startEngineSelected, startEngineNotSelected, tire_lf, tire_rf, tire_lb, tire_rb, outerGuage;
+    private ImageView fuel_level, tire_lf, tire_rf, tire_lb, tire_rb, outerGuage, locked, unlocked, engineState;
     private LinearLayout vehicle_details;
     private TextView dte, odo, oilLife, pressure_lf, pressure_rf, pressure_lb, pressure_rb, nickName;
 
@@ -33,15 +31,11 @@ public class VehiclePage extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_vehicle_page, container, false);
-        lockedSelected = view.findViewById(R.id.locked_selected);
-        unlockedSelected = view.findViewById(R.id.unlocked_selected);
-        lockedNotSelected = view.findViewById(R.id.locked_not_selected);
-        unlockedNotSelected = view.findViewById(R.id.unlocked_not_selected);
-        startEngineNotSelected = view.findViewById(R.id.start_engine_not_selected);
-        startEngineSelected = view.findViewById(R.id.start_engine_selected);
+        locked = view.findViewById(R.id.locked);
+        unlocked = view.findViewById(R.id.unlocked);
+        engineState=view.findViewById(R.id.engine);
         fuel_level=view.findViewById(R.id.fuel_level);
         vehicle_details = view.findViewById(R.id.vehicle_odometer_details);
-        fuel_level = view.findViewById(R.id.fuel_level);
         outerGuage = view.findViewById(R.id.outer);
         tire_lb = view.findViewById(R.id.lb);
         tire_lf = view.findViewById(R.id.lt);
@@ -56,18 +50,13 @@ public class VehiclePage extends Fragment {
         oilLife = view.findViewById(R.id.oil_life);
         nickName = view.findViewById(R.id.nickname);
         vehicle_details.setVisibility(GONE);
-        lockedSelected.setVisibility(GONE);
-        unlockedSelected.setVisibility(GONE);
-        startEngineSelected.setVisibility(GONE);
+        locked.setEnabled(false);
+        unlocked.setEnabled(false);
+        engineState.setEnabled(false);
         String url = "https://car-guide.herokuapp.com/getvehicle?username="+PreferencesManager.getEmail();
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
             vehicle_details.setVisibility(View.VISIBLE);
-            lockedSelected.setVisibility(View.VISIBLE);
-            startEngineNotSelected.setVisibility(View.VISIBLE);
-            unlockedNotSelected.setVisibility(View.VISIBLE);
-            lockedNotSelected.setVisibility(GONE);
-            unlockedSelected.setVisibility(GONE);
 
             JSONObject vehicle;
             try {
@@ -75,24 +64,23 @@ public class VehiclePage extends Fragment {
                 nickName.setText(vehicle.get("nickname").toString());
                 oilLife.setText("OIL LIFE\n" + vehicle.getInt("oil_life")+"%");
                 if(vehicle.getBoolean("engine_state")){
-                    startEngineNotSelected.setVisibility(GONE);
-                    startEngineSelected.setVisibility(View.VISIBLE);
+                    engineState.setImageResource(R.drawable.stop_engine);
                 }
                 else {
-                    startEngineNotSelected.setVisibility(View.VISIBLE);
-                    startEngineSelected.setVisibility(GONE);
+                    engineState.setImageResource(R.drawable.start_engine_selected);
                 }
+                engineState.setEnabled(true);
                 if(vehicle.getBoolean("lock_state")){
-                    unlockedNotSelected.setVisibility(GONE);
-                    unlockedSelected.setVisibility(View.VISIBLE);
-                    lockedSelected.setVisibility(GONE);
-                    lockedNotSelected.setVisibility(View.VISIBLE);
+                    locked.setImageResource(R.drawable.locked_not_selected);
+                    unlocked.setImageResource(R.drawable.unlocked_selected);
+                    locked.setEnabled(false);
+                    unlocked.setEnabled(true);
                 }
                 else {
-                    unlockedNotSelected.setVisibility(View.VISIBLE);
-                    unlockedSelected.setVisibility(GONE);
-                    lockedNotSelected.setVisibility(GONE);
-                    lockedSelected.setVisibility(View.VISIBLE);
+                    locked.setImageResource(R.drawable.lock_selected);
+                    unlocked.setImageResource(R.drawable.unlocked_not_selected);
+                    locked.setEnabled(true);
+                    unlocked.setEnabled(false);
                 }
                 JSONObject tirepressure = vehicle.getJSONObject("tpms");
                 pressure_lb.setText(String.valueOf(tirepressure.getInt("lb")));
@@ -117,36 +105,24 @@ public class VehiclePage extends Fragment {
 
         }, error -> {
             vehicle_details.setVisibility(GONE);
-            lockedSelected.setVisibility(GONE);
-            startEngineNotSelected.setVisibility(GONE);
-            unlockedNotSelected.setVisibility(GONE);
-            lockedNotSelected.setVisibility(View.VISIBLE);
-            startEngineNotSelected.setVisibility(View.VISIBLE);
-            unlockedSelected.setVisibility(View.VISIBLE);
         });
 
-        lockedSelected.setOnClickListener(view1 -> {
-            lockedSelected.setVisibility(GONE);
-            lockedNotSelected.setVisibility(View.VISIBLE);
-            unlockedNotSelected.setVisibility(GONE);
-            unlockedSelected.setVisibility(View.VISIBLE);
-            startEngineNotSelected.setVisibility(GONE);
-            startEngineSelected.setVisibility(View.VISIBLE);
+        locked.setOnClickListener(view1 -> {
+            locked.setImageResource(R.drawable.locked_not_selected);
+            unlocked.setImageResource(R.drawable.unlocked_selected);
+            locked.setEnabled(false);
+            unlocked.setEnabled(true);
         });
 
-        unlockedSelected.setOnClickListener(view1 -> {
-            lockedSelected.setVisibility(View.VISIBLE);
-            lockedNotSelected.setVisibility(GONE);
-            unlockedNotSelected.setVisibility(View.VISIBLE);
-            unlockedSelected.setVisibility(GONE);
-            startEngineNotSelected.setVisibility(View.VISIBLE);
-            startEngineSelected.setVisibility(GONE);
+        unlocked.setOnClickListener(view12 -> {
+            locked.setImageResource(R.drawable.lock_selected);
+            unlocked.setImageResource(R.drawable.unlocked_not_selected);
+            locked.setEnabled(true);
+            unlocked.setEnabled(false);
         });
+
 
         ApiSingleton.getInstance(view.getContext()).addToRequestQueue(jsonObjectRequest);
-
-        startEngineSelected.setOnClickListener(view2 -> Toast.makeText(view.getContext() , "Engine is starting", Toast.LENGTH_SHORT).show());
-        startEngineNotSelected.setOnClickListener(view2 -> Toast.makeText(view.getContext() , "Please Lock the vehicle", Toast.LENGTH_SHORT).show());
 
         return view;
     }
