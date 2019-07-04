@@ -69,11 +69,11 @@ public class VehiclePage extends Fragment {
                 oilLife.setText("OIL LIFE\n" + vehicle.getInt("oil_life")+"%");
                 if(vehicle.getBoolean("engine_state")){
                     engineState.setImageResource(R.drawable.stop_engine);
-                    enginestateflag.set(true);
+                    enginestateflag.set(false);
                 }
                 else {
                     engineState.setImageResource(R.drawable.start_engine_selected);
-                    enginestateflag.set(false);
+                    enginestateflag.set(true);
                 }
                 if(vehicle.getBoolean("lock_state")){
                     locked.setImageResource(R.drawable.locked_not_selected);
@@ -89,21 +89,13 @@ public class VehiclePage extends Fragment {
                 }
                 JSONObject tirepressure = vehicle.getJSONObject("tpms");
                 pressure_lb.setText(String.valueOf(tirepressure.getInt("lb")));
-                if(tirepressure.getInt("lb")<27)
-                {
-                    tire_lb.setImageResource(R.drawable.tyre_red);
-                }
-                else if(tirepressure.getInt("lb")<30)
-                {
-                    tire_lb.setImageResource(R.drawable.tyre_orange);
-                }
-                else
-                {
-                    tire_lb.setImageResource(R.drawable.tyre_green);
-                }
+                setTireImage(pressure_lb, tire_lb);
                 pressure_rb.setText(String.valueOf(tirepressure.getInt("rb")));
+                setTireImage(pressure_rb, tire_rb);
                 pressure_lf.setText(String.valueOf(tirepressure.getInt("lf")));
+                setTireImage(pressure_lf, tire_lf);
                 pressure_rf.setText(String.valueOf(tirepressure.getInt("rf")));
+                setTireImage(pressure_rf, tire_rf);
                 if(PreferencesManager.getUnitOfMeasurement().equals("Miles")){
                     int odo_reading = (int) (vehicle.getInt("odometer")/1.6);
                     int dte_reading = (int) (vehicle.getInt("dte")/1.6);
@@ -172,4 +164,16 @@ public class VehiclePage extends Fragment {
 
         return view;
     }
+
+    private void setTireImage(TextView tirePressure, ImageView tire) {
+        int pressure = Integer.parseInt(tirePressure.getText().toString());
+        if(pressure<27)
+            tire.setImageResource(R.drawable.tyre_red);
+        else if(pressure<30)
+            tire.setImageResource(R.drawable.tyre_orange);
+        else
+            tire.setImageResource(R.drawable.tyre_green);
+    }
+
+
 }
