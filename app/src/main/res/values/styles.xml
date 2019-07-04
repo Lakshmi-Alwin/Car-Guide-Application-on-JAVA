@@ -9,8 +9,10 @@
 
     </style>
     <style name="complete_co">
-        font-family: Ford Antenna;
-        <item name="android:textSize">14sp</item>
+       <!-- <item name="android:letterSpacing">0.1em</item>
+        <item name="android:lineHeight">44px</item>-->
+        <item name="android:fontFamily">Ford Antenna</item>
+        <item name="android:textSize">30px</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
