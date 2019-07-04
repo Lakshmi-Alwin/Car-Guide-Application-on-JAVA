@@ -1,11 +1,18 @@
 package com.example.carguide;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,16 +30,18 @@ import static android.view.View.GONE;
 
 public class VehiclePage extends Fragment {
 
-    private ImageView fuel_level, tire_lf, tire_rf, tire_lb, tire_rb, outerGuage, locked, unlocked, engineState;
+    private ImageView fuel_level, tire_lf, tire_rf, tire_lb, tire_rb, outerGuage, locked, unlocked, engineState,rsa;
     private LinearLayout vehicle_details;
     private TextView dte, odo, oilLife, pressure_lf, pressure_rf, pressure_lb, pressure_rb, nickName;
+    public View view;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_vehicle_page, container, false);
+        view = inflater.inflate(R.layout.fragment_vehicle_page, container, false);
+        rsa=view.findViewById(R.id.triangle_up);
         locked = view.findViewById(R.id.locked);
         unlocked = view.findViewById(R.id.unlocked);
         engineState=view.findViewById(R.id.engine);
@@ -159,7 +168,15 @@ public class VehiclePage extends Fragment {
             ApiSingleton.getInstance(view12.getContext()).addToRequestQueue(request);
         });
 
-
+        rsa.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:8606667384"));
+            if (ActivityCompat.checkSelfPermission(this.getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 1);
+                Log.v(MainActivity.TAG, "No permission to call");
+            }
+            startActivity(intent);});
+                
         ApiSingleton.getInstance(view.getContext()).addToRequestQueue(jsonObjectRequest);
 
         return view;
@@ -174,6 +191,7 @@ public class VehiclePage extends Fragment {
         else
             tire.setImageResource(R.drawable.tyre_green);
     }
+
 
 
 }
