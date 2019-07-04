@@ -15,8 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicBoolean;
 import static android.view.View.GONE;
 
 public class VehiclePage extends Fragment {
@@ -53,11 +55,13 @@ public class VehiclePage extends Fragment {
         locked.setEnabled(false);
         unlocked.setEnabled(false);
         engineState.setEnabled(false);
-        String url = "https://car-guide.herokuapp.com/getvehicle?username="+PreferencesManager.getEmail();
+        String username = "?username="+PreferencesManager.getEmail();
+        String url = "https://car-guide.herokuapp.com/";
+        AtomicBoolean enginestateflag = new AtomicBoolean(false);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url+"getvehicle"+username, null, response -> {
             vehicle_details.setVisibility(View.VISIBLE);
-
+            engineState.setEnabled(true);
             JSONObject vehicle;
             try {
                 vehicle = response.getJSONObject("vehicle");
@@ -65,11 +69,12 @@ public class VehiclePage extends Fragment {
                 oilLife.setText("OIL LIFE\n" + vehicle.getInt("oil_life")+"%");
                 if(vehicle.getBoolean("engine_state")){
                     engineState.setImageResource(R.drawable.stop_engine);
+                    enginestateflag.set(true);
                 }
                 else {
                     engineState.setImageResource(R.drawable.start_engine_selected);
+                    enginestateflag.set(false);
                 }
-                engineState.setEnabled(true);
                 if(vehicle.getBoolean("lock_state")){
                     locked.setImageResource(R.drawable.locked_not_selected);
                     unlocked.setImageResource(R.drawable.unlocked_selected);
@@ -108,17 +113,46 @@ public class VehiclePage extends Fragment {
         });
 
         locked.setOnClickListener(view1 -> {
-            locked.setImageResource(R.drawable.locked_not_selected);
-            unlocked.setImageResource(R.drawable.unlocked_selected);
-            locked.setEnabled(false);
-            unlocked.setEnabled(true);
+            StringRequest request = new StringRequest(Request.Method.PUT, url+"toggledoorlockstate"+username, response -> {
+                locked.setImageResource(R.drawable.locked_not_selected);
+                unlocked.setImageResource(R.drawable.unlocked_selected);
+                locked.setEnabled(false);
+                unlocked.setEnabled(true);
+            }, error -> Toast.makeText(view.getContext(), "Failed to lock the vehicle",Toast.LENGTH_SHORT).show());
+            ApiSingleton.getInstance(view.getContext()).addToRequestQueue(request);
         });
 
-        unlocked.setOnClickListener(view12 -> {
-            locked.setImageResource(R.drawable.lock_selected);
-            unlocked.setImageResource(R.drawable.unlocked_not_selected);
-            locked.setEnabled(true);
-            unlocked.setEnabled(false);
+        unlocked.setOnClickListener(view1 -> {
+            StringRequest request = new StringRequest(Request.Method.PUT, url+"toggledoorlockstate"+username, response -> {
+                locked.setImageResource(R.drawable.lock_selected);
+                unlocked.setImageResource(R.drawable.unlocked_not_selected);
+                locked.setEnabled(true);
+                unlocked.setEnabled(false);
+            }, error -> Toast.makeText(view.getContext(), "Failed to unlock the vehicle",Toast.LENGTH_SHORT).show());
+            ApiSingleton.getInstance(view.getContext()).addToRequestQueue(request);
+        });
+
+        engineState.setOnClickListener(view12 -> {
+            StringRequest request = new StringRequest(Request.Method.PUT, url+"toggleenginestate"+username, response -> {
+                if(enginestateflag.get()) {
+                    Toast.makeText(view12.getContext(), "Engine is starting", Toast.LENGTH_SHORT).show();
+                    engineState.postDelayed(() -> engineState.setImageResource(R.drawable.stop_engine), 500);
+                    enginestateflag.set(!enginestateflag.get());
+                }
+                else {
+                    Toast.makeText(view12.getContext(), "Engine is stoping", Toast.LENGTH_SHORT).show();
+                    engineState.postDelayed(() -> engineState.setImageResource(R.drawable.start_engine_selected), 500);
+                    enginestateflag.set(!enginestateflag.get());
+                }
+            }, error -> {
+                if(enginestateflag.get()) {
+                    Toast.makeText(view12.getContext(), "Engine is not able to start", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(view12.getContext(), "Engine is not able to stop", Toast.LENGTH_SHORT).show();
+                }
+            });
+            ApiSingleton.getInstance(view12.getContext()).addToRequestQueue(request);
         });
 
 

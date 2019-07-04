@@ -24,7 +24,6 @@
         android:layout_centerHorizontal="true"
         android:textAppearance="@style/complete_co"
         android:textStyle="italic"
-        android:fontFamily="FordAntennaWGL-Semibolditalic.ttf"
         android:textSize="30dp"/>
 
     <ImageView
