@@ -25,6 +25,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 import static android.view.View.GONE;
 
@@ -171,11 +173,12 @@ public class VehiclePage extends Fragment {
         rsa.setOnClickListener(view -> {
             Intent intent = new Intent(Intent.ACTION_CALL);
             intent.setData(Uri.parse("tel:8606667384"));
-            if (ActivityCompat.checkSelfPermission(this.getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 1);
+            if (ActivityCompat.checkSelfPermission(Objects.requireNonNull(getActivity()), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 1);
                 Log.v(MainActivity.TAG, "No permission to call");
             }
-            startActivity(intent);});
+            else startActivity(intent);
+        });
                 
         ApiSingleton.getInstance(view.getContext()).addToRequestQueue(jsonObjectRequest);
 
