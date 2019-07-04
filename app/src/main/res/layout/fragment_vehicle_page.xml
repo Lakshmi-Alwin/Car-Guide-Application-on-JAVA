@@ -325,7 +325,6 @@
             android:layout_below="@+id/maincar"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="210dp"
-            android:text="MY FIESTA"
             android:textAppearance="@style/complete_co"
             android:textColor="@color/white"
             android:textSize="25dp" />
