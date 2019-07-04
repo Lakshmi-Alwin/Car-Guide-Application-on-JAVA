@@ -96,6 +96,18 @@ public class VehiclePage extends Fragment {
                 }
                 JSONObject tirepressure = vehicle.getJSONObject("tpms");
                 pressure_lb.setText(String.valueOf(tirepressure.getInt("lb")));
+                if(tirepressure.getInt("lb")<27)
+                {
+                    tire_lb.setImageResource(R.drawable.tyre_red);
+                }
+                else if(tirepressure.getInt("lb")<30)
+                {
+                    tire_lb.setImageResource(R.drawable.tyre_orange);
+                }
+                else
+                {
+                    tire_lb.setImageResource(R.drawable.tyre_green);
+                }
                 pressure_rb.setText(String.valueOf(tirepressure.getInt("rb")));
                 pressure_lf.setText(String.valueOf(tirepressure.getInt("lf")));
                 pressure_rf.setText(String.valueOf(tirepressure.getInt("rf")));
