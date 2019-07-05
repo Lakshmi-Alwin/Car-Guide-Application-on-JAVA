@@ -43,7 +43,8 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="15dp"
                         android:layout_below="@+id/callLogo"
-                        android:layout_marginTop="20dp"/>
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/my_font"/>
                 </RelativeLayout>
             </LinearLayout>
 
@@ -69,7 +70,8 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="15dp"
                         android:layout_below="@+id/emailLogo"
-                        android:layout_marginTop="20dp"/>
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/my_font"/>
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -90,7 +92,8 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:gravity="bottom"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginLeft="30dp"
+                android:fontFamily="@font/my_font"/>
             </RelativeLayout>
         </LinearLayout>
         <LinearLayout

@@ -180,7 +180,8 @@
                         android:layout_centerInParent="true"
                         android:text="DTE\n206 MILES"
                         android:textAlignment="center"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/my_font"/>
                 </RelativeLayout>
 
                 </LinearLayout>
@@ -200,7 +201,8 @@
                             android:layout_centerInParent="true"
                             android:text="ODO\n206609 MILES"
                             android:textAlignment="center"
-                            android:textColor="@color/white"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/my_font"/>
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -220,7 +222,8 @@
                             android:layout_centerInParent="true"
                             android:textAlignment="center"
                             android:text="OIL LIFE\n93%"
-                            android:textColor="@color/white"/>
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/my_font"/>
                     </RelativeLayout>
 
                 </LinearLayout>

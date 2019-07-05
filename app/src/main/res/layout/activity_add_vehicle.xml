@@ -9,9 +9,10 @@
 
     <ImageView
         android:id="@+id/vector_left"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
         android:src="@drawable/vector_left" />
 
     <EditText
@@ -23,10 +24,13 @@
         android:layout_marginTop="30dp"
         android:hint="Enter your VIN"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:textColorHint="@color/off_white"
         android:inputType="textCapCharacters"
         android:outlineSpotShadowColor="@color/white"
-        android:backgroundTint="@color/white"/>
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/my_font"/>
 
 
     <EditText
@@ -41,7 +45,10 @@
         android:outlineSpotShadowColor="@color/white"
         android:backgroundTint="@color/white"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:textColorHint="@color/off_white"
+        android:fontFamily="@font/my_font"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"

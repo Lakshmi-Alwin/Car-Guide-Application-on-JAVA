@@ -20,7 +20,8 @@
         android:text="Wheels"
         android:layout_below="@+id/wheel_pic"
         android:layout_centerInParent="true"
-        android:textAppearance="@style/complete_co"
-        android:textStyle="italic"
-        android:textSize="30dp"/>
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:fontFamily="@font/my_font"/>
 </RelativeLayout>

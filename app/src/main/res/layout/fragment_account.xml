@@ -28,8 +28,9 @@
            android:layout_marginTop="25dp"
            android:textColor="@color/white"
            android:textAppearance="@style/complete_co"
-           android:textSize="25dp"
-           android:text="NAME"/>
+           android:textSize="25sp"
+           android:text="NAME"
+           android:fontFamily="@font/my_font"/>
 
        <LinearLayout
            android:layout_width="match_parent"
@@ -68,7 +69,8 @@
                        android:layout_below="@+id/edit_profile_icon"
                        android:text="EDIT PROFILE"
                        android:layout_marginTop="10dp"
-                       android:textColor="@color/black"/>
+                       android:textColor="@color/black"
+                       android:fontFamily="@font/my_font"/>
                    </RelativeLayout>
                </RelativeLayout>
            </LinearLayout>
@@ -100,7 +102,8 @@
                            android:layout_below="@+id/settings_icon"
                            android:text=" SETTINGS"
                            android:layout_marginTop="10dp"
-                           android:textColor="@color/black"/>
+                           android:textColor="@color/black"
+                           android:fontFamily="@font/my_font"/>
                    </RelativeLayout>
                </RelativeLayout>
            </LinearLayout>
@@ -120,7 +123,8 @@
            android:text="LOG OUT"
            android:textStyle="bold"
            android:textAppearance="@style/complete_co"
-           android:textSize="15dp"/>
+           android:textSize="15dp"
+           android:fontFamily="@font/my_font"/>
 
    </RelativeLayout>
 </FrameLayout>

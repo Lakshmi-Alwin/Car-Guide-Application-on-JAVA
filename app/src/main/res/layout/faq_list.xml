@@ -17,9 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
-            android:textColor="@color/off_white"
+            android:textColor="@color/faqwhite"
             android:gravity="center_vertical"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:fontFamily="@font/my_font"/>
     </LinearLayout>
 
     <LinearLayout

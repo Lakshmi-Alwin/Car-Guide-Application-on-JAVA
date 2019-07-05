@@ -21,20 +21,22 @@
             android:text="Welcome"
             android:textAppearance="@style/vehicle_page"
             android:textColor="@color/white"
-            android:textSize="40dp"
-            android:layout_marginStart="30dp" />
+            android:textSize="35dp"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/regular"/>
 
         <TextView
             android:id="@+id/vehicle_page_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/welcome"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
             android:textColor="@color/white"
             android:textAppearance="@style/vehicle_page"
-            android:textSize="35dp"
-            android:layout_marginLeft="30dp" />
+            android:textSize="28dp"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/regular"/>
 
 
         <TextView
@@ -43,12 +45,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/vehicle_page_name"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:text="@string/desc"
+            android:text="Glad you joined Wheels!\nAdd your vehicle to unlock its full potential!!!"
             android:textAppearance="@style/vehicle_page"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:fontFamily="@font/light_font"/>
 
         <ImageView
             android:id="@+id/car_vehiclepage"

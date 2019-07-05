@@ -33,7 +33,8 @@
         android:gravity="center_vertical"
         android:text="Terms and Privacy"
         android:textColor="@color/white"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:fontFamily="@font/my_font"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -48,6 +49,7 @@
             android:textStyle="italic"
             android:lineSpacingExtra="10dp"
             android:text="@string/privacy_policy"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:fontFamily="@font/light_font"/>
     </ScrollView>
 </LinearLayout>

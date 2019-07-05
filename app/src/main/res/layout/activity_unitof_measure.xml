@@ -41,7 +41,8 @@
             android:text="Kilometer"
             android:textSize="20dp"
             android:textColor="@color/white"
-            android:buttonTint="@color/white"/>
+            android:buttonTint="@color/white"
+            android:fontFamily="@font/my_font"/>
 
         <RadioButton
             android:id="@+id/radio_miles"
@@ -51,7 +52,8 @@
             android:text="Miles"
             android:textSize="20dp"
             android:textColor="@color/white"
-            android:buttonTint="@color/white"/>
+            android:buttonTint="@color/white"
+            android:fontFamily="@font/my_font"/>
     </RadioGroup>
 
 </RelativeLayout>
