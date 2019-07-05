@@ -8,13 +8,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="80dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/vector_left"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="30dp"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="90dp"
         android:orientation="vertical"
         android:outlineSpotShadowColor="@color/white"
         android:outlineAmbientShadowColor="@color/white">
@@ -39,7 +39,7 @@
             android:layout_height="70dp"
             android:onClick="onRadioButtonClicked"
             android:text="Kilometer"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textColor="@color/white"
             android:buttonTint="@color/white"/>
 
@@ -49,7 +49,7 @@
             android:layout_height="70dp"
             android:onClick="onRadioButtonClicked"
             android:text="Miles"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textColor="@color/white"
             android:buttonTint="@color/white"/>
     </RadioGroup>

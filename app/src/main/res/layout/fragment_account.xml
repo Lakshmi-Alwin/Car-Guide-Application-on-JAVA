@@ -118,6 +118,7 @@
            android:layout_marginTop="270dp"
            android:textColor="@color/white"
            android:text="LOG OUT"
+           android:textStyle="bold"
            android:textAppearance="@style/complete_co"
            android:textSize="15dp"/>
 
