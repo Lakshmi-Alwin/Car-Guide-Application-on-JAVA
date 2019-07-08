@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -33,11 +32,6 @@ public class vehicle extends Fragment {
         TextView profileName = v.findViewById(R.id.vehicle_page_name);
         GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(getActivity());
         ImageView vehicle = v.findViewById(R.id.car_vehiclepage);
-//        vehicle.setOnClickListener(v1 -> {
-//            Intent intent = new Intent(v1.getContext(), AddVehicle.class);
-//            startActivity(intent);
-//        });
-
         GestureDetector gdt = new GestureDetector(new GestureListner());
         vehicle.setOnTouchListener((view, motionEvent) -> {
             gdt.onTouchEvent(motionEvent);
