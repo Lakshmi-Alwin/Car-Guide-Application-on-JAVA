@@ -1,12 +1,14 @@
 package com.example.carguide;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -75,10 +77,12 @@ public class SettingsActivity extends AppCompatActivity {
             return new MyViewHolder(listItem);
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
             Log.v(MainActivity.TAG,"inside bindviewholder");
             holder.textView.setText(this.mDataset[position]);
+            holder.textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             final int p = position;
             holder.linearLayout.setOnClickListener(v -> {
                 switch (p){
