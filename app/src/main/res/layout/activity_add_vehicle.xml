@@ -45,6 +45,7 @@
         android:outlineAmbientShadowColor="@color/white"
         android:outlineSpotShadowColor="@color/white"
         android:backgroundTint="@color/white"
+        android:maxLength="20"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="italic"
