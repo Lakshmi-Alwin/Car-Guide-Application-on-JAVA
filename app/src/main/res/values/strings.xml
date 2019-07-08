@@ -20,21 +20,25 @@
 
 
     <string-array name="questions">
-        <item>Question 1</item>
-        <item>Question 2</item>
-        <item>Question 3</item>
-        <item>Question 4</item>
-        <item>Question 5</item>
-        <item>Question 6</item>
+        <item>Remote Start With Vehicle Controls</item>
+        <item>Remote Unlock with Wheels App</item>
+        <item>Road Side Assistance</item>
+        <item>Remove Vehicle</item>
+        <item>Change Units Of Measurement</item>
+        <item>My Profile Details</item>
+        <item>Vehicle Overview</item>
+        <item>Terms and conditions</item>
     </string-array>
 
     <string-array name="answers">
-        <item>Answer to the question 1 is here</item>
-        <item>Answer to the question 2 is here</item>
-        <item>Answer to the question 3 is here</item>
-        <item>Answer to the question 4 is here</item>
-        <item>Answer to the question 5 is here</item>
-        <item>Answer to the question 6 is here</item>
+        <item>Select this on vehicle page</item>
+        <item>There are two images on vehicle page which can be used for remote lock/unlock vehicle</item>
+        <item>Click on the triagular button on the top of vehicle image on Vehicle page.\nIt will alllow you to call our road side assistance team.</item>
+        <item>Go to the Accounts page.\nThen select the Settings icon.\nUser can see a remove vehicle option which  can be used</item>
+        <item>Go to the Accounts page.\nThen select the Settings icon.\nUser can see a Units of Measurement option to toggle between the units.</item>
+        <item>Go to the Accounts page.\nThen select the Edit Profile icon.\n</item>
+        <item>Navigate to the Vehicle page.\nUser will be provided with Tirepressure details,fuel level,oil life,odometer reading and distance to empty.</item>
+        <item>Go to the Accounts page.\nThen select the Settings icon.\nUser can click on Terms and Privacy to go through details.</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
