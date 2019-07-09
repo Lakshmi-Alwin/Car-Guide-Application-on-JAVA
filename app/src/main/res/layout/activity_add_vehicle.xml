@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:background="@color/black"
-                tools:context=".AddVehicle">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".AddVehicle">
 
     <ImageView
         android:id="@+id/vector_left"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/vector_left" />
 
     <EditText
@@ -22,16 +22,16 @@
         android:layout_below="@+id/vector_left"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="30dp"
-        android:hint="Enter your VIN"
-        android:maxLength="17"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="italic"
-        android:textColorHint="@color/off_white"
-        android:inputType="textCapCharacters"
-        android:outlineSpotShadowColor="@color/white"
         android:backgroundTint="@color/white"
-        android:fontFamily="@font/my_font"/>
+        android:fontFamily="@font/my_font"
+        android:hint="Enter your VIN"
+        android:inputType="textCapCharacters"
+        android:maxLength="17"
+        android:outlineSpotShadowColor="@color/white"
+        android:textColor="@color/white"
+        android:textColorHint="@color/off_white"
+        android:textSize="15sp"
+        android:textStyle="italic" />
 
 
     <EditText
@@ -41,22 +41,22 @@
         android:layout_below="@+id/vin"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="30dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/my_font"
         android:hint="Nickname for your vehicle"
+        android:maxLength="20"
         android:outlineAmbientShadowColor="@color/white"
         android:outlineSpotShadowColor="@color/white"
-        android:backgroundTint="@color/white"
-        android:maxLength="20"
         android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="italic"
         android:textColorHint="@color/off_white"
-        android:fontFamily="@font/my_font"/>
+        android:textSize="15sp"
+        android:textStyle="italic" />
 
     <RelativeLayout
+        android:id="@+id/loading_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:id="@+id/loading_layout">
+        android:layout_centerInParent="true">
 
         <TextView
             android:id="@+id/vehicle_result"

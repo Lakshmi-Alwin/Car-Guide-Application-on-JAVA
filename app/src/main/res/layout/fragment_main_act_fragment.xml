@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             tools:context=".support">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black">
-    <RelativeLayout android:layout_height="match_parent"
-        android:layout_width="match_parent">
+    tools:context=".support">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/slider_image"
@@ -21,32 +20,31 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             app:srcCompat="@drawable/slider_image1" />
-    <TextView
-        android:id="@+id/main_text"
-        android:layout_width="300dp"
-        android:layout_height="25dp"
-        android:textSize="20dp"
-        android:layout_below="@+id/slider_image"
-        android:layout_marginTop="40dp"
-        android:text="@string/complete_co"
-        android:textAppearance="@style/complete_co"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal|top"
-        android:fontFamily="@font/my_font"
-        android:textStyle="bold"
-        />
+
+        <TextView
+            android:id="@+id/main_text"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/slider_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/my_font"
+            android:gravity="center_horizontal|top"
+            android:text="@string/complete_co"
+            android:textAppearance="@style/complete_co"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/sub_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@+id/main_text"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:text="@string/jedi_like_p"
-            android:textAppearance="@style/jedi_like_p"
+            android:fontFamily="@font/light_font"
             android:gravity="center_horizontal|top"
-            android:fontFamily="@font/light_font" />
-</RelativeLayout>
-</LinearLayout>
+            android:text="@string/jedi_like_p"
+            android:textAppearance="@style/jedi_like_p" />
+    </RelativeLayout>
 </FrameLayout>

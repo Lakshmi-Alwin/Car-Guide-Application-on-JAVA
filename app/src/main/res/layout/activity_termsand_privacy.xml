@@ -3,53 +3,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FAQActivity"
-    android:weightSum="10"
+    android:background="@color/black"
     android:orientation="vertical"
-    android:background="@color/black">
+    android:weightSum="10"
+    tools:context=".FAQActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/vector_left"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="30dp"
-                android:id="@+id/vector_left"/>
-        </RelativeLayout>
-    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/vector_left"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/vector_left" />
+    </RelativeLayout>
+
     <TextView
+        android:id="@+id/faqQuestion"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/faqQuestion"
         android:layout_weight="1"
-        android:textSize="30sp"
+        android:fontFamily="@font/my_font"
         android:gravity="center_vertical"
         android:text="Terms and Privacy"
-        android:textColor="@color/white"
         android:textAlignment="center"
-        android:fontFamily="@font/my_font"/>
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="20dp"
         android:layout_weight="8">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="italic"
+            android:fontFamily="@font/light_font"
             android:lineSpacingExtra="10dp"
             android:text="@string/privacy_policy"
+            android:textAlignment="center"
             android:textColor="@color/white"
-            android:fontFamily="@font/light_font"/>
+            android:textSize="20sp"
+            android:textStyle="italic" />
     </ScrollView>
 </LinearLayout>

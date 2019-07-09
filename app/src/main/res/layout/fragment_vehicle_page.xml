@@ -34,118 +34,141 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/maincar"
+            android:layout_alignEnd="@+id/maincar"
             android:layout_alignRight="@+id/maincar"
-            android:layout_marginRight="-100dp"
             android:layout_marginTop="110dp"
+            android:layout_marginEnd="-100dp"
+            android:layout_marginRight="-100dp"
             app:srcCompat="@drawable/outer_rectangle" />
 
         <ImageView
             android:id="@+id/scale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/outer"
+            android:layout_alignStart="@+id/outer"
             android:layout_alignLeft="@+id/outer"
+            android:layout_alignTop="@+id/outer"
             app:srcCompat="@drawable/scale" />
 
         <ImageView
             android:id="@+id/fuel_level"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/inner_reading"
+            android:layout_alignEnd="@+id/outer"
             android:layout_alignRight="@+id/outer"
-            android:layout_alignBottom="@+id/outer"/>
+            android:layout_alignBottom="@+id/outer"
+            app:srcCompat="@drawable/inner_reading" />
 
         <TextView
             android:id="@+id/e"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/outer"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/outer"
+            android:layout_toLeftOf="@+id/outer"
             android:text="E"
             android:textColor="@color/white"
-            android:layout_toLeftOf="@+id/outer"
-            android:layout_marginRight="10dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/f"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/outer"
-            android:text="F"
-            android:layout_toLeftOf="@+id/outer"
+            android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/outer"
+            android:layout_toLeftOf="@+id/outer"
+            android:text="F"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/tyre_lt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/white"
-            android:layout_toLeftOf="@+id/maincar"
             android:layout_marginTop="115dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/maincar"
+            android:layout_toLeftOf="@+id/maincar"
+            android:text=""
+            android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/lt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/white_wheel"
+            android:layout_marginTop="115dp"
+            android:layout_toEndOf="@+id/tyre_lt"
             android:layout_toRightOf="@+id/tyre_lt"
-            android:layout_marginTop="115dp"/>
+            app:srcCompat="@drawable/white_wheel" />
 
         <TextView
             android:id="@+id/tyre_rt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/white"
-            android:layout_toRightOf="@+id/maincar"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="115dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_toEndOf="@+id/maincar"
+            android:layout_toRightOf="@+id/maincar"
+            android:text=""
+            android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/rt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/white_wheel"
+            android:layout_marginTop="115dp"
+            android:layout_toStartOf="@+id/tyre_rt"
             android:layout_toLeftOf="@+id/tyre_rt"
-            android:layout_marginTop="115dp" />
+            app:srcCompat="@drawable/white_wheel" />
 
         <TextView
             android:id="@+id/tyre_lb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/white"
-            android:layout_toLeftOf="@+id/maincar"
             android:layout_marginTop="250dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/maincar"
+            android:layout_toLeftOf="@+id/maincar"
+            android:text=""
+            android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/lb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/white_wheel"
+            android:layout_marginTop="250dp"
+            android:layout_toEndOf="@+id/tyre_lb"
             android:layout_toRightOf="@+id/tyre_lb"
-            android:layout_marginTop="250dp" />
+            app:srcCompat="@drawable/white_wheel" />
+
         <TextView
             android:id="@+id/tyre_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/white"
-            android:layout_toRightOf="@+id/maincar"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="250dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_toEndOf="@+id/maincar"
+            android:layout_toRightOf="@+id/maincar"
+            android:text=""
+            android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/white_wheel"
+            android:layout_marginTop="250dp"
+            android:layout_toStartOf="@+id/tyre_rb"
             android:layout_toLeftOf="@+id/tyre_rb"
-            android:layout_marginTop="250dp" />
+            app:srcCompat="@drawable/white_wheel" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -156,40 +179,42 @@
                 android:id="@+id/line_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/line"/>
+                app:srcCompat="@drawable/line" />
 
             <LinearLayout
+                android:id="@+id/vehicle_odometer_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="3"
                 android:orientation="horizontal"
-                android:id="@+id/vehicle_odometer_details">
+                android:weightSum="3">
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="70dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="70dp"
+                    android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/dte"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="DTE\n206 MILES"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/my_font"/>
-                </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/dte"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/my_font"
+                            android:text="DTE\n206 MILES"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="70dp">
+                    android:layout_height="70dp"
+                    android:layout_weight="1">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -199,18 +224,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
+                            android:fontFamily="@font/my_font"
                             android:text="ODO\n206609 MILES"
                             android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:fontFamily="@font/my_font"/>
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="70dp">
+                    android:layout_height="70dp"
+                    android:layout_weight="1">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -220,21 +246,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
-                            android:textAlignment="center"
+                            android:fontFamily="@font/my_font"
                             android:text="OIL LIFE\n93%"
-                            android:textColor="@color/white"
-                            android:fontFamily="@font/my_font"/>
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/line"
                 android:layout_below="@+id/line_one"
-                android:layout_marginTop="70dp"/>
+                android:layout_marginTop="70dp"
+                app:srcCompat="@drawable/line" />
 
 
         </RelativeLayout>
@@ -306,7 +333,7 @@
             android:layout_marginTop="210dp"
             android:textAppearance="@style/complete_co"
             android:textColor="@color/white"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
 
     </RelativeLayout>
 </FrameLayout>

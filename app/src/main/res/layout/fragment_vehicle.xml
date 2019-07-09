@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:background="@color/black"
-             tools:context=".vehicle">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".vehicle">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,27 +16,27 @@
             android:id="@+id/welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="120dp"
+            android:fontFamily="@font/regular"
             android:text="Welcome"
             android:textAppearance="@style/vehicle_page"
             android:textColor="@color/white"
-            android:textSize="35dp"
-            android:layout_marginStart="30dp"
-            android:fontFamily="@font/regular"/>
+            android:textSize="35sp" />
 
         <TextView
             android:id="@+id/vehicle_page_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/welcome"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:textColor="@color/white"
+            android:fontFamily="@font/regular"
             android:textAppearance="@style/vehicle_page"
-            android:textSize="28dp"
-            android:layout_marginLeft="30dp"
-            android:fontFamily="@font/regular"/>
+            android:textColor="@color/white"
+            android:textSize="28sp" />
 
 
         <TextView
@@ -47,11 +47,11 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
+            android:fontFamily="@font/light_font"
             android:text="Glad you joined Wheels!\nAdd your vehicle to unlock its full potential!!!"
             android:textAppearance="@style/vehicle_page"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            android:fontFamily="@font/light_font"/>
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/car_vehiclepage"
